@@ -68,9 +68,13 @@ nav {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(13, 13, 13, 0.95);
+    /* Keep navbar visually stable (no blur/transparency changes on scroll) */
+    background: var(--terminal-bg);
     border-bottom: 1px solid var(--terminal-border);
-    backdrop-filter: blur(10px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    /* Keep content away from the very top edge on mobile browser UI changes */
+    padding-top: env(safe-area-inset-top, 0px);
 }
 
 .nav-container {
