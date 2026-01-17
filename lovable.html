@@ -3,13 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lovable para EJs | Mauá</title>
+    <title>Lovable para EJs | MAUA.pro</title>
     <meta name="description" content="Aprenda Lovable e crie MVPs funcionais para impressionar clientes. Curso de 8h para Empresas Juniores com 1 mês de Lovable incluso.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://maua.pro/lovable">
+    <meta property="og:title" content="Lovable para EJs | MAUA.pro">
+    <meta property="og:description" content="Aprenda Lovable e crie MVPs funcionais para impressionar clientes. Curso de 8h para Empresas Juniores com 1 mês de Lovable incluso.">
+    <meta property="og:image" content="https://maua.pro/lovable-icon-bg-dark.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://maua.pro/lovable">
+    <meta property="twitter:title" content="Lovable para EJs | MAUA.pro">
+    <meta property="twitter:description" content="Aprenda Lovable e crie MVPs funcionais para impressionar clientes. Curso de 8h para Empresas Juniores com 1 mês de Lovable incluso.">
+    <meta property="twitter:image" content="https://maua.pro/lovable-icon-bg-dark.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <!-- PostHog -->
+    <script>
+        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group identify setPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags resetGroups onFeatureFlags addFeatureFlagsHandler onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+        posthog.init('phc_xLQNgbYeIteMvYsUYzpIIaYkngwDHCJfuFBOJOh3Iyq', {
+            api_host: 'https://us.i.posthog.com',
+            defaults: '2025-11-30'
+        })
+    </script>
     <style>
         /* Page-specific overrides for Lovable */
         ::selection {
@@ -79,8 +101,11 @@
         }
 
         .typing-container {
-            display: inline-block;
-            min-height: 1.2em;
+            display: inline;
+        }
+
+        .hero h1 {
+            min-height: 3.5em;
         }
 
         .typing-text {
@@ -800,6 +825,101 @@
             transform: translateY(-4px);
         }
 
+        /* Mobile Actions */
+        .mobile-actions {
+            display: none;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .share-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--terminal-surface);
+            border: 1px solid var(--lovable-pink);
+            border-radius: 6px;
+            color: var(--lovable-pink);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .share-btn:hover {
+            background: rgba(236, 72, 153, 0.1);
+            border-color: var(--lovable-pink);
+            color: var(--lovable-pink);
+        }
+
+        .share-btn:active {
+            transform: scale(0.95);
+        }
+
+        .share-toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--terminal-surface);
+            border: 1px solid var(--terminal-green);
+            color: var(--terminal-green);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            z-index: 1000;
+            animation: fadeInOut 2s ease-in-out forwards;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+            15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-float:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                width: 56px;
+                height: 56px;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+
+            .whatsapp-float svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
         /* Responsive */
         @media (max-width: 900px) {
             .hero-container {
@@ -818,8 +938,16 @@
                 display: none;
             }
 
+            .mobile-actions {
+                display: flex;
+            }
+
             .mobile-menu {
                 display: flex;
+            }
+
+            .hero h1 {
+                min-height: 6em;
             }
         }
     </style>
@@ -828,17 +956,28 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="logo">MAUA.pro · EJs</a>
+            <a href="/" class="logo">Lovable para EJs</a>
             <ul class="nav-links">
-                <li><a href="index.html#programs">programas</a></li>
-                <li><a href="lovable.html" style="color: #EC4899;">lovable</a></li>
-                <li><a href="claude-code.html" style="color: var(--claude-orange);">claude code</a></li>
+                <li><a href="/#programs">programas</a></li>
+                <li><a href="/lovable" style="color: #EC4899;">lovable</a></li>
+                <li><a href="/claude-code" style="color: var(--claude-orange);">claude code</a></li>
                 <li><a href="https://payment-link-v3.ton.com.br/pl_nPwBlba16yxJnk8FybH6vANg7QRGXZ49" class="nav-cta" target="_blank">Garantir vaga</a></li>
             </ul>
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="mobile-actions">
+                <button class="share-btn" aria-label="Compartilhar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="18" cy="5" r="3"/>
+                        <circle cx="6" cy="12" r="3"/>
+                        <circle cx="18" cy="19" r="3"/>
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                    </svg>
+                </button>
+                <div class="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
@@ -1276,9 +1415,9 @@
     <!-- Footer -->
     <footer>
         <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="claude-code.html">Curso Claude Code</a>
-            <a href="index.html#programs">Outros cursos</a>
+            <a href="/">Home</a>
+            <a href="/claude-code">Curso Claude Code</a>
+            <a href="/#programs">Outros cursos</a>
         </div>
         <div class="footer-copy">
             © 2026 Mauá
@@ -1372,6 +1511,49 @@
 
         // Start typing effect
         setTimeout(type, 500);
+
+        // Share button functionality
+        const shareBtn = document.querySelector('.share-btn');
+        if (shareBtn) {
+            shareBtn.addEventListener('click', async () => {
+                const shareData = {
+                    title: 'Curso Lovable para EJs | MAUA.pro',
+                    text: 'Aprenda a criar MVPs funcionais sem saber programar. Curso online ao vivo para Empresas Juniores.',
+                    url: window.location.href
+                };
+
+                try {
+                    if (navigator.share) {
+                        await navigator.share(shareData);
+                    } else {
+                        // Fallback: copy to clipboard
+                        await navigator.clipboard.writeText(window.location.href);
+                        showToast('Link copiado!');
+                    }
+                } catch (err) {
+                    // User cancelled or error
+                    if (err.name !== 'AbortError') {
+                        await navigator.clipboard.writeText(window.location.href);
+                        showToast('Link copiado!');
+                    }
+                }
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'share-toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2000);
+        }
     </script>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5524992679147?text=Oi!%20Vim%20pelo%20site%20maua.pro" class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="currentColor"/>
+        </svg>
+    </a>
 </body>
 </html>
