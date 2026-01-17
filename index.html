@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mauá · Estaleiro Digital</title>
+    <meta name="description" content="Cursos práticos de IA para criar produtos digitais. Lovable, Claude Code e mais. Para quem quer construir, não só consumir.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">MAUA</a>
+            <ul class="nav-links">
+                <li><a href="index.html#programs">programas</a></li>
+                <li><a href="lovable.html" style="color: #EC4899;">lovable</a></li>
+                <li><a href="claude-code.html" style="color: var(--claude-orange);">claude code</a></li>
+                <li><a href="https://wa.me/5524992679147?text=Oi!%20Quero%20saber%20mais%20sobre%20os%20cursos" class="nav-cta">começar</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="terminal-window hero-terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <span class="terminal-title">maua.cc — zsh</span>
+                </div>
+                <div class="terminal-body">
+                    <div class="hero-ascii">
+███╗   ███╗ █████╗ ██╗   ██╗ █████╗
+████╗ ████║██╔══██╗██║   ██║██╔══██╗
+██╔████╔██║███████║██║   ██║███████║
+██║╚██╔╝██║██╔══██║██║   ██║██╔══██║
+██║ ╚═╝ ██║██║  ██║╚██████╔╝██║  ██║
+╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝
+                    </div>
+
+                    <div class="command-line">
+                        <span class="prompt">$</span>
+                        <span class="command">maua --init</span>
+                    </div>
+
+                    <div class="output">
+                        <p style="color: var(--text-muted); margin-bottom: 1rem;">// "lugar elevado" em tupi</p>
+                    </div>
+
+                    <h1 class="hero-title">
+                        Aprenda a <span class="highlight">construir</span> produtos digitais com <span class="highlight">IA</span><span class="typing-cursor"></span>
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        Cursos práticos de Lovable e Claude Code. Para quem quer criar, não só consumir.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#programs" class="btn btn-primary">$ ./ver-programas</a>
+                        <a href="https://wa.me/5524992679147?text=Oi!%20Quero%20saber%20mais%20sobre%20os%20cursos" class="btn btn-secondary">$ ./falar-no-whatsapp</a>
+                    </div>
+
+                    <div class="stats-terminal">
+                        <div class="stat-line">
+                            <span class="stat-key">turmas_abertas:</span>
+                            <span class="stat-value" style="color: var(--terminal-green);">● Lovable + Claude Code para EJs</span>
+                        </div>
+                        <div class="stat-line">
+                            <span class="stat-key">proxima_turma:</span>
+                            <span class="stat-value" style="color: var(--terminal-amber);">21 e 28 de março</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs" id="programs">
+        <div class="section-header">
+            <div class="section-command">$ ls ./programas/</div>
+            <h2 class="section-title">Escolha seu programa</h2>
+            <p class="section-subtitle">Cursos específicos para cada perfil. Do básico ao avançado.</p>
+        </div>
+
+        <div class="programs-grid">
+            <!-- PM Program - Em Breve -->
+            <div class="program-card" style="opacity: 0.7;">
+                <div class="program-header">
+                    <div class="program-dots">
+                        <div class="terminal-dot red"></div>
+                        <div class="terminal-dot yellow"></div>
+                        <div class="terminal-dot green"></div>
+                    </div>
+                    <span class="program-badge badge-pm">PARA_PMS</span>
+                </div>
+                <div class="program-body">
+                    <h3 class="program-title">claude-for-pms/</h3>
+                    <p class="program-desc">Acelere discovery, escreva specs, analise dados e automatize tarefas repetitivas do dia a dia de PM.</p>
+                    <ul class="program-features">
+                        <li>Automação de PRDs e specs</li>
+                        <li>Análise de dados com prompts</li>
+                        <li>Prototipagem rápida de ideias</li>
+                        <li>Integração com ferramentas PM</li>
+                        <li>Comunidade exclusiva de PMs</li>
+                    </ul>
+                    <div class="program-price">
+                        <span class="price-label">status:</span>
+                        <span class="price-value" style="color: var(--terminal-amber);">maio 2026</span>
+                    </div>
+                    <a href="https://wa.me/5524992679147?text=Oi!%20Quero%20ser%20avisado%20quando%20abrir%20o%20curso%20para%20PMs" class="btn btn-secondary program-btn">$ ./avisar-quando-abrir</a>
+                </div>
+            </div>
+
+            <!-- Non-Tech Program - Em Breve -->
+            <div class="program-card" style="opacity: 0.7;">
+                <div class="program-header">
+                    <div class="program-dots">
+                        <div class="terminal-dot red"></div>
+                        <div class="terminal-dot yellow"></div>
+                        <div class="terminal-dot green"></div>
+                    </div>
+                    <span class="program-badge badge-nocode">NO_CODE</span>
+                </div>
+                <div class="program-body">
+                    <h3 class="program-title">claude-do-zero/</h3>
+                    <p class="program-desc">Perfeito para quem não tem background técnico mas quer dominar a ferramenta mais poderosa de IA.</p>
+                    <ul class="program-features">
+                        <li>Do zero ao avançado em prompts</li>
+                        <li>Casos de uso para o dia a dia</li>
+                        <li>Automações sem código</li>
+                        <li>Templates prontos para usar</li>
+                        <li>Suporte dedicado iniciantes</li>
+                    </ul>
+                    <div class="program-price">
+                        <span class="price-label">status:</span>
+                        <span class="price-value" style="color: var(--terminal-amber);">maio 2026</span>
+                    </div>
+                    <a href="https://wa.me/5524992679147?text=Oi!%20Quero%20ser%20avisado%20quando%20abrir%20o%20curso%20Do%20Zero" class="btn btn-secondary program-btn">$ ./avisar-quando-abrir</a>
+                </div>
+            </div>
+
+            <!-- Dev Program - Em Breve -->
+            <div class="program-card" style="opacity: 0.7;">
+                <div class="program-header">
+                    <div class="program-dots">
+                        <div class="terminal-dot red"></div>
+                        <div class="terminal-dot yellow"></div>
+                        <div class="terminal-dot green"></div>
+                    </div>
+                    <span class="program-badge badge-dev">DEVS</span>
+                </div>
+                <div class="program-body">
+                    <h3 class="program-title">claude-code-masterclass/</h3>
+                    <p class="program-desc">Para devs que querem extrair o máximo do Claude Code. Vibe coding, debugging avançado, arquitetura com IA.</p>
+                    <ul class="program-features">
+                        <li>Vibe coding & pair programming</li>
+                        <li>Debugging e refactoring com IA</li>
+                        <li>MCP e integrações avançadas</li>
+                        <li>Workflows automatizados</li>
+                        <li>Projetos práticos reais</li>
+                    </ul>
+                    <div class="program-price">
+                        <span class="price-label">status:</span>
+                        <span class="price-value" style="color: var(--terminal-amber);">maio 2026</span>
+                    </div>
+                    <a href="https://wa.me/5524992679147?text=Oi!%20Quero%20ser%20avisado%20quando%20abrir%20a%20Masterclass%20para%20Devs" class="btn btn-secondary program-btn">$ ./avisar-quando-abrir</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cursos para EJs -->
+    <section class="ej-section" id="empresas-juniores">
+        <div class="ej-container">
+            <div class="section-header" style="margin-bottom: 3rem;">
+                <div class="section-command">$ ls ./cursos-para-ejs/</div>
+                <h2 class="section-title">Cursos para Empresas Juniores</h2>
+                <p class="section-subtitle">Escolha o que faz mais sentido pro seu perfil</p>
+            </div>
+
+            <div class="programs-grid" style="max-width: 900px; margin: 0 auto;">
+                <!-- Lovable -->
+                <div class="program-card" style="border-color: #EC4899;">
+                    <div class="program-header" style="background: rgba(236, 72, 153, 0.1);">
+                        <div class="program-dots">
+                            <div class="terminal-dot red"></div>
+                            <div class="terminal-dot yellow"></div>
+                            <div class="terminal-dot green"></div>
+                        </div>
+                        <span class="program-badge" style="background: rgba(236, 72, 153, 0.2); color: #EC4899;">SEM CÓDIGO</span>
+                    </div>
+                    <div class="program-body">
+                        <h3 class="program-title" style="color: #EC4899;">lovable-para-ejs/</h3>
+                        <p class="program-desc">Crie MVPs funcionais sem saber programar. Ideal pra EJs de ADM, Economia, Engenharia de Produção.</p>
+                        <ul class="program-features">
+                            <li>Não precisa saber código</li>
+                            <li>Protótipo pronto em horas</li>
+                            <li>Back-end e autenticação</li>
+                            <li>Integração com IA</li>
+                            <li>1 mês de Lovable incluso</li>
+                        </ul>
+                        <div class="program-price">
+                            <span class="price-label">a partir de:</span>
+                            <span class="price-value">R$ 799</span>
+                            <span class="price-period">à vista</span>
+                        </div>
+                        <a href="lovable.html" class="btn btn-primary program-btn" style="background: #EC4899; border-color: #EC4899;">$ ./ver-curso-lovable</a>
+                    </div>
+                </div>
+
+                <!-- Claude Code -->
+                <div class="program-card" style="border-color: var(--claude-orange);">
+                    <div class="program-header">
+                        <div class="program-dots">
+                            <div class="terminal-dot red"></div>
+                            <div class="terminal-dot yellow"></div>
+                            <div class="terminal-dot green"></div>
+                        </div>
+                        <span class="program-badge badge-ej">TÉCNICO</span>
+                    </div>
+                    <div class="program-body">
+                        <h3 class="program-title">claude-code-para-ejs/</h3>
+                        <p class="program-desc">Domine a CLI mais poderosa de IA. Ideal pra EJs de Computação, Engenharia, ou quem quer ir mais fundo.</p>
+                        <ul class="program-features">
+                            <li>Conhecimento básico de código</li>
+                            <li>Automação de processos</li>
+                            <li>Pesquisa e análise com IA</li>
+                            <li>Prototipagem avançada</li>
+                            <li>1 mês de Claude Pro incluso</li>
+                        </ul>
+                        <div class="program-price">
+                            <span class="price-label">a partir de:</span>
+                            <span class="price-value">R$ 1.341</span>
+                            <span class="price-period">à vista</span>
+                        </div>
+                        <a href="claude-code.html" class="btn btn-primary program-btn">$ ./ver-curso-claude</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem; color: var(--text-muted); font-size: 0.85rem;">
+                <p>Lovable: <span style="color: #EC4899;">21 e 28 de março</span> · Claude Code: <span style="color: var(--claude-orange);">11 e 18 de abril</span> · Sábados · 9h às 13h · Online ao vivo</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="section-header">
+                <div class="section-command">$ cat ./por-que-claudinho.md</div>
+                <h2 class="section-title">Por que aprender com a gente?</h2>
+                <p class="section-subtitle">Metodologia prática, conteúdo atualizado e suporte real.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-cmd">--practical</div>
+                    <h3 class="feature-title">Aulas 100% Práticas</h3>
+                    <p class="feature-desc">Nada de teoria seca. Aprenda fazendo com projetos reais e casos de uso do mercado.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-cmd">--updated</div>
+                    <h3 class="feature-title">Sempre Atualizado</h3>
+                    <p class="feature-desc">Conteúdo atualizado toda semana com as novidades do Claude e melhores práticas.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-cmd">--community</div>
+                    <h3 class="feature-title">Comunidade Ativa</h3>
+                    <p class="feature-desc">Grupo exclusivo para trocar experiências, tirar dúvidas e fazer networking.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-cmd">--results</div>
+                    <h3 class="feature-title">Foco em Resultados</h3>
+                    <p class="feature-desc">Métricas claras de progresso. Você vai ver sua produtividade aumentar desde a primeira aula.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-cmd">--mobile</div>
+                    <h3 class="feature-title">Acesso em Qualquer Lugar</h3>
+                    <p class="feature-desc">Plataforma responsiva. Assista no celular, tablet ou computador, quando quiser.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-cmd">--certificate</div>
+                    <h3 class="feature-title">Certificado de Conclusão</h3>
+                    <p class="feature-desc">Receba um certificado ao concluir o curso para adicionar ao seu LinkedIn.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- CTA Section -->
+    <section class="cta" id="cta">
+        <div class="terminal-window cta-terminal">
+            <div class="terminal-header">
+                <div class="terminal-dot red"></div>
+                <div class="terminal-dot yellow"></div>
+                <div class="terminal-dot green"></div>
+                <span class="terminal-title">ready to start?</span>
+            </div>
+            <div class="cta-body">
+                <h2>Pronto para transformar sua EJ?</h2>
+                <p>Turmas abertas para março. Escolha o curso que faz mais sentido pra você.</p>
+                <div class="hero-buttons" style="justify-content: center;">
+                    <a href="lovable.html" class="btn btn-primary" style="background: #EC4899; border-color: #EC4899;">$ ./curso-lovable</a>
+                    <a href="claude-code.html" class="btn btn-primary">$ ./curso-claude-code</a>
+                    <a href="https://wa.me/5524992679147?text=Oi!%20Quero%20saber%20mais%20sobre%20os%20cursos" class="btn btn-secondary">$ ./tirar-dúvidas</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid" style="grid-template-columns: 2fr 1fr 1fr;">
+                <div class="footer-brand">
+                    <a href="#" class="logo">MAUA</a>
+                    <p>Cursos práticos de IA para criar produtos digitais.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>programas</h4>
+                    <ul>
+                        <li><a href="#programs">Para PMs</a></li>
+                        <li><a href="#programs">Para Não-Técnicos</a></li>
+                        <li><a href="#programs">Para Devs</a></li>
+                        <li><a href="lovable.html" style="color: #EC4899;">Lovable para EJs</a></li>
+                        <li><a href="claude-code.html" style="color: var(--claude-orange);">Claude Code para EJs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>contato</h4>
+                    <ul>
+                        <li><a href="https://wa.me/5524992679147?text=Oi!%20Vim%20pelo%20site%20maua.cc">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Mauá</span>
+                <div class="social-links">
+                    <a href="https://wa.me/5524992679147">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.background = 'var(--terminal-bg)';
+            navLinks.style.padding = '1rem 2rem';
+            navLinks.style.borderBottom = '1px solid var(--terminal-border)';
+        });
+
+        // Typing effect for cursor
+        const cursor = document.querySelector('.typing-cursor');
+        if (cursor) {
+            setInterval(() => {
+                cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+            }, 530);
+        }
+
+        // Add timestamp to logs dynamically
+        const timestamps = document.querySelectorAll('.log-timestamp');
+        timestamps.forEach(ts => {
+            const now = new Date();
+            const formatted = now.toISOString().replace('T', ' ').substring(0, 19);
+            // Keep original timestamps for demo
+        });
+    </script>
+</body>
+</html>

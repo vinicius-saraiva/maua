@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lovable para EJs | Mauá</title>
+    <meta name="description" content="Aprenda Lovable e crie MVPs funcionais para impressionar clientes. Curso de 8h para Empresas Juniores com 1 mês de Lovable incluso.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Page-specific overrides for Lovable */
+        ::selection {
+            background: var(--lovable-pink);
+            color: var(--terminal-bg);
+        }
+
+        .logo {
+            color: var(--claude-orange);
+        }
+
+        .nav-cta {
+            border: 1px solid var(--lovable-pink);
+            color: var(--lovable-pink) !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--lovable-pink);
+        }
+
+        /* Hero Section - Course Pages */
+        .hero {
+            padding: 8rem 2rem 4rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 30% 0%, rgba(236, 72, 153, 0.12) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(236, 72, 153, 0.15);
+            border: 1px solid var(--lovable-pink);
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            color: var(--lovable-pink);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 .highlight {
+            color: var(--lovable-pink);
+        }
+
+        .typing-container {
+            display: inline-block;
+            min-height: 1.2em;
+        }
+
+        .typing-text {
+            color: var(--terminal-green);
+            border-right: none;
+        }
+
+        .typing-cursor {
+            color: var(--terminal-green);
+            animation: blink 0.7s infinite;
+            font-weight: 400;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-details {
+            background: var(--terminal-surface);
+            border: 1px solid var(--terminal-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.6rem 0;
+            font-size: 0.9rem;
+        }
+
+        .hero-detail-item:not(:last-child) {
+            border-bottom: 1px dashed var(--terminal-border);
+        }
+
+        .hero-detail-icon {
+            color: var(--lovable-pink);
+            font-size: 1.1rem;
+        }
+
+        .hero-detail-text {
+            color: var(--text-secondary);
+        }
+
+        .hero-detail-text strong {
+            color: var(--text-primary);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: 1px solid transparent;
+            font-family: 'JetBrains Mono', monospace;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--lovable-pink);
+            color: var(--terminal-bg);
+        }
+
+        .btn-primary:hover {
+            background: var(--lovable-pink-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border-color: var(--terminal-border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--terminal-green);
+            color: var(--terminal-green);
+        }
+
+        /* Price Card */
+        .price-card {
+            background: var(--terminal-surface);
+            border: 2px solid var(--lovable-pink);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .price-card-header {
+            background: rgba(236, 72, 153, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px dashed var(--terminal-border);
+        }
+
+        .price-card-header h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .price-card-header p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .price-dates {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 0.75rem 0;
+        }
+
+        .price-date {
+            background: var(--terminal-bg);
+            border: 2px solid var(--terminal-green);
+            color: var(--terminal-green);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .price-date-sep {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .price-card-body {
+            padding: 1.5rem;
+        }
+
+        .price-main {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-installment-main {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .price-installment-main span {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--terminal-green);
+        }
+
+        .price-or {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            margin: 0.5rem 0;
+        }
+
+        .price-cash {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--lovable-pink);
+        }
+
+        .price-includes {
+            background: var(--terminal-bg);
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-includes-title {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-includes-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .price-includes-item::before {
+            content: '✓';
+            color: var(--terminal-green);
+            font-weight: 700;
+        }
+
+        .price-highlight {
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid var(--terminal-green);
+            border-radius: 6px;
+            padding: 0.75rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--terminal-green);
+        }
+
+        .price-cta {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .price-slots {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .price-slots[style*="terminal-amber"] {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Section styling */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-dark {
+            background: var(--terminal-surface);
+            border-top: 1px solid var(--terminal-border);
+            border-bottom: 1px solid var(--terminal-border);
+        }
+
+        .section-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-cmd {
+            color: var(--terminal-green);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Problem/Solution */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .problem-card {
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--terminal-border);
+            background: var(--terminal-bg);
+        }
+
+        .problem-card.bad {
+            border-color: rgba(239, 68, 68, 0.5);
+        }
+
+        .problem-card.good {
+            border-color: rgba(236, 72, 153, 0.5);
+        }
+
+        .problem-card-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .problem-card.bad .problem-card-title {
+            color: var(--terminal-red);
+        }
+
+        .problem-card.good .problem-card-title {
+            color: var(--lovable-pink);
+        }
+
+        .problem-card ul {
+            list-style: none;
+        }
+
+        .problem-card li {
+            padding: 0.4rem 0;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .problem-card.bad li::before {
+            content: '✗';
+            color: var(--terminal-red);
+        }
+
+        .problem-card.good li::before {
+            content: '✓';
+            color: var(--lovable-pink);
+        }
+
+        /* Value Props */
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .value-card {
+            background: var(--terminal-surface);
+            border: 1px solid var(--terminal-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .value-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--lovable-pink);
+            margin-bottom: 0.5rem;
+        }
+
+        .value-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--terminal-surface);
+            border: 1px solid var(--terminal-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .testimonial-text {
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--terminal-border);
+        }
+
+        .testimonial-name {
+            color: var(--lovable-pink);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-role {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Encontro Blocks */
+        .encontro-block {
+            margin-bottom: 2rem;
+        }
+
+        .encontro-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .encontro-tag {
+            display: inline-block;
+            background: var(--lovable-pink);
+            color: var(--terminal-bg);
+            padding: 0.3rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .encontro-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .encontro-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .encontro-entrega {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(236, 72, 153, 0.1);
+            border: 1px dashed var(--lovable-pink);
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        .encontro-entrega strong {
+            color: var(--lovable-pink);
+        }
+
+        /* Curriculum */
+        .curriculum-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .curriculum-card {
+            background: var(--terminal-surface);
+            border: 1px solid var(--terminal-border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            transition: border-color 0.2s;
+        }
+
+        .curriculum-card:hover {
+            border-color: var(--lovable-pink);
+        }
+
+        .curriculum-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .curriculum-num {
+            width: 28px;
+            height: 28px;
+            background: var(--lovable-pink);
+            color: var(--terminal-bg);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .curriculum-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .curriculum-desc {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Schedule */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .schedule-card {
+            background: var(--terminal-surface);
+            border: 1px solid var(--terminal-border);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .schedule-day {
+            font-size: 0.8rem;
+            color: var(--lovable-pink);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .schedule-date {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .schedule-time {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .schedule-format {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed var(--terminal-border);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Guarantee */
+        .guarantee-body {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .guarantee-cmd {
+            color: var(--terminal-green);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .guarantee-cmd .prompt {
+            color: var(--lovable-pink);
+        }
+
+        .guarantee-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .guarantee-title span {
+            color: var(--terminal-green);
+        }
+
+        .guarantee-text {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .guarantee-text strong {
+            color: var(--text-primary);
+        }
+
+        .guarantee-output {
+            background: var(--terminal-bg);
+            border-radius: 6px;
+            padding: 1rem;
+            text-align: left;
+            font-size: 0.85rem;
+            color: var(--terminal-green);
+        }
+
+        .guarantee-output .line {
+            margin: 0.3rem 0;
+        }
+
+        .guarantee-output .comment {
+            color: var(--text-muted);
+        }
+
+        /* FAQ */
+        .faq-item {
+            border-bottom: 1px solid var(--terminal-border);
+            padding: 1.25rem 0;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .faq-question::before {
+            content: '?';
+            color: var(--lovable-pink);
+            margin-right: 1rem;
+        }
+
+        .faq-question::after {
+            content: '+';
+            color: var(--text-muted);
+            font-size: 1.25rem;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '−';
+            color: var(--terminal-green);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s;
+            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding-top: 1rem;
+            padding-left: 1.75rem;
+        }
+
+        /* CTA Final */
+        .cta-final {
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .cta-final h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-final p {
+            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--terminal-bg);
+            border-top: 1px solid var(--terminal-border);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--lovable-pink);
+        }
+
+        .footer-copy {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .problem-grid,
+            .curriculum-grid,
+            .schedule-grid,
+            .value-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">MAUA · EJs</a>
+            <ul class="nav-links">
+                <li><a href="index.html#programs">programas</a></li>
+                <li><a href="lovable.html" style="color: #EC4899;">lovable</a></li>
+                <li><a href="claude-code.html" style="color: var(--claude-orange);">claude code</a></li>
+                <li><a href="https://payment-link-v3.ton.com.br/pl_nPwBlba16yxJnk8FybH6vANg7QRGXZ49" class="nav-cta" target="_blank">Garantir vaga</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-tag">CURSO ONLINE AO VIVO — MARÇO 2026</div>
+                <div class="hero-tag" style="background: rgba(251, 191, 36, 0.15); border-color: var(--terminal-amber); color: var(--terminal-amber); margin-top: 0.75rem;">● 27 vagas restantes</div>
+                <h1>
+                    Crie <span class="highlight">MVPs funcionais</span> e 
+                    <span class="typing-container">
+                        <span class="typing-text"></span>
+                        <span class="typing-cursor">|</span>
+                    </span>
+                </h1>
+                <p class="hero-subtitle">
+                    Aprenda <strong>Lovable</strong> e chegue na reunião com o protótipo funcionando. Sua EJ vai fechar mais projetos, cobrar mais caro e entregar mais rápido.
+                </p>
+
+                <div class="hero-details">
+                    <div class="hero-detail-item">
+                        <span class="hero-detail-icon">📅</span>
+                        <span class="hero-detail-text"><strong>2 sábados:</strong> 21 e 28 de março</span>
+                    </div>
+                    <div class="hero-detail-item">
+                        <span class="hero-detail-icon">⏰</span>
+                        <span class="hero-detail-text"><strong>Horário:</strong> 9h às 13h (4 horas cada)</span>
+                    </div>
+                    <div class="hero-detail-item">
+                        <span class="hero-detail-icon">💻</span>
+                        <span class="hero-detail-text"><strong>Formato:</strong> Online, ao vivo, mão na massa</span>
+                    </div>
+                    <div class="hero-detail-item">
+                        <span class="hero-detail-icon">🎁</span>
+                        <span class="hero-detail-text"><strong>Incluso:</strong> Lovable Pro (1 mês) — valor de R$100</span>
+                    </div>
+                </div>
+
+                <div class="hero-cta">
+                    <a href="https://payment-link-v3.ton.com.br/pl_nPwBlba16yxJnk8FybH6vANg7QRGXZ49" class="btn btn-primary" target="_blank">
+                        Garantir minha vaga
+                    </a>
+                    <a href="#conteudo" class="btn btn-secondary">Ver conteúdo</a>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-header">
+                    <h3>Próxima turma</h3>
+                    <div class="price-dates">
+                        <span class="price-date">21/mar</span>
+                        <span class="price-date-sep">e</span>
+                        <span class="price-date">28/mar</span>
+                    </div>
+                    <p>Sábados · 9h às 13h · Online</p>
+                </div>
+                <div class="price-card-body">
+                    <div class="price-main">
+                        <div class="price-installment-main">12x de <span>R$ 74,17</span> <span style="color: var(--terminal-green); font-weight: 700; font-size: 0.9em; margin-left: 0.5em;">SEM JUROS</span></div>
+                        <div class="price-or">ou</div>
+                        <div class="price-cash">R$ 783,20 no PIX<br><span style="font-size: 0.85em; opacity: 0.8;">(12% de desconto)</span></div>
+                    </div>
+
+                    <div class="price-highlight">
+                        Lovable Pro incluso (1 mês) — economize R$100
+                    </div>
+
+                    <div class="price-includes">
+                        <div class="price-includes-title">O que está incluso:</div>
+                        <div class="price-includes-item">8 horas de curso ao vivo</div>
+                        <div class="price-includes-item">Lovable Pro por 1 mês</div>
+                        <div class="price-includes-item">Gravação das aulas</div>
+                        <div class="price-includes-item">Templates de projeto</div>
+                        <div class="price-includes-item">Grupo de alunos</div>
+                    </div>
+
+                    <a href="https://payment-link-v3.ton.com.br/pl_nPwBlba16yxJnk8FybH6vANg7QRGXZ49" class="btn btn-primary price-cta" target="_blank">
+                        Quero participar
+                    </a>
+
+                    <div class="price-slots" style="color: var(--terminal-amber); font-weight: 600;">● 27 vagas restantes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proposta de Valor -->
+    <section class="section section-dark">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-cmd">$ lovable --value-proposition</div>
+                <h2 class="section-title">Por que aprender Lovable?</h2>
+                <p class="section-subtitle">O que muda na sua EJ depois do curso</p>
+            </div>
+
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-number">2x</div>
+                    <div class="value-label">Ticket médio maior<br>oferecendo MVPs funcionais</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-number">5x</div>
+                    <div class="value-label">Mais projetos fechados<br>impressionando na proposta</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-number">70%</div>
+                    <div class="value-label">Menos tempo<br>do briefing à entrega</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="section section-dark">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-cmd">$ lovable --testimonials</div>
+                <h2 class="section-title">O que dizem quem já fez</h2>
+                <p class="section-subtitle">Depoimentos da Masterclass AI Product Builder</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Achei muito relevante o uso de ferramentas de IA para construir protótipos funcionais em pouco tempo. A parte mais valiosa foi descobrir que, com as ferramentas certas, você consegue criar um protótipo real muito rapidamente."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-name">Irene Romanello</div>
+                        <div class="testimonial-role">Product Manager @ Fiscozen</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Me deu a capacidade concreta de criar MVPs eficazes sem precisar envolver o time de desenvolvimento."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-name">Laura Serafin</div>
+                        <div class="testimonial-role">UI Designer @ MUGO</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "As melhores práticas para extrair o máximo do Lovable e as bibliotecas para integrar suas funcionalidades estiveram entre os aspectos mais importantes do curso. Inputs muito concretos e acionáveis."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-name">Luca de Franceschi</div>
+                        <div class="testimonial-role">Senior Product Manager @ Intento</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problema -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-cmd">$ diff --proposta-tradicional --com-lovable</div>
+                <h2 class="section-title">O problema que você conhece</h2>
+            </div>
+
+            <div class="problem-grid">
+                <div class="problem-card bad">
+                    <div class="problem-card-title">
+                        ✗ Proposta tradicional
+                    </div>
+                    <ul>
+                        <li>Mostra slides e promessas</li>
+                        <li>Cliente precisa imaginar o resultado</li>
+                        <li>Concorre com outras EJs iguais</li>
+                        <li>Projeto demora semanas pra sair</li>
+                        <li>Ticket limitado por ser "só consultoria"</li>
+                    </ul>
+                </div>
+
+                <div class="problem-card good">
+                    <div class="problem-card-title">
+                        ✓ Com Lovable
+                    </div>
+                    <ul>
+                        <li>Mostra protótipo funcionando na reunião</li>
+                        <li>Cliente clica, navega, entende na hora</li>
+                        <li>Diferenciação imediata da concorrência</li>
+                        <li>MVP pronto em horas, não semanas</li>
+                        <li>Ticket maior: entrega produto, não só ideia</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conteúdo -->
+    <section class="section section-dark" id="conteudo">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-cmd">$ ls ./modulos/</div>
+                <h2 class="section-title">O que você vai aprender</h2>
+                <p class="section-subtitle">8 horas, 100% mão na massa, focado em resultado</p>
+            </div>
+
+            <!-- Encontro 1 -->
+            <div class="encontro-block">
+                <div class="encontro-header">
+                    <span class="encontro-tag">ENCONTRO 1 — 21 DE MARÇO</span>
+                    <h3 class="encontro-title">Do Zero ao Protótipo Funcional</h3>
+                    <p class="encontro-desc">Setup, Lovable intensivo e back-end essencial</p>
+                </div>
+                <div class="curriculum-grid">
+                    <div class="curriculum-card">
+                        <div class="curriculum-header">
+                            <div class="curriculum-num">01</div>
+                            <div class="curriculum-title">Abertura + Mindset</div>
+                        </div>
+                        <p class="curriculum-desc">Como a IA mudou o jogo. O que dá pra construir hoje que era impossível antes. Cases reais.</p>
+                    </div>
+                    <div class="curriculum-card">
+                        <div class="curriculum-header">
+                            <div class="curriculum-num">02</div>
+                            <div class="curriculum-title">Lovable Intensivo</div>
+                        </div>
+                        <p class="curriculum-desc">Setup, primeiro projeto, Knowledge Files, prompts que funcionam, iteração e refinamento.</p>
+                    </div>
+                    <div class="curriculum-card">
+                        <div class="curriculum-header">
+                            <div class="curriculum-num">03</div>
+                            <div class="curriculum-title">Back-End Essencial</div>
+                        </div>
+                        <p class="curriculum-desc">Supabase: autenticação, banco de dados e storage. Tudo que precisa pra ter um MVP real.</p>
+                    </div>
+                    <div class="curriculum-card">
+                        <div class="curriculum-header">
+                            <div class="curriculum-num">04</div>
+                            <div class="curriculum-title">Deploy + Domínio</div>
+                        </div>
+                        <p class="curriculum-desc">Colocar no ar com URL personalizada. Cliente acessa de qualquer lugar.</p>
+                    </div>
+                </div>
+                <div class="encontro-entrega">
+                    <strong>Entregável:</strong> Aplicação publicada com login funcionando e dados persistidos
+                </div>
+            </div>
+
+            <!-- Encontro 2 -->
+            <div class="encontro-block" style="margin-top: 3rem;">
+                <div class="encontro-header">
+                    <span class="encontro-tag">ENCONTRO 2 — 28 DE MARÇO</span>
+                    <h3 class="encontro-title">Integrações que Impressionam</h3>
+                    <p class="encontro-desc">IA, APIs e Demo Day</p>
+                </div>
+                <div class="curriculum-grid">
+                    <div class="curriculum-card">
+                        <div class="curriculum-header">
+                            <div class="curriculum-num">05</div>
+                            <div class="curriculum-title">Showcase + Troubleshooting</div>
+                        </div>
+                        <p class="curriculum-desc">Mostra o que construiu, resolve problemas comuns, tira dúvidas.</p>
+                    </div>
+                    <div class="curriculum-card">
+                        <div class="curriculum-header">
+                            <div class="curriculum-num">06</div>
+                            <div class="curriculum-title">Integrando IA</div>
+                        </div>
+                        <p class="curriculum-desc">OpenAI no seu MVP: gerar textos, analisar dados, chatbot simples. O diferencial que impressiona.</p>
+                    </div>
+                    <div class="curriculum-card">
+                        <div class="curriculum-header">
+                            <div class="curriculum-num">07</div>
+                            <div class="curriculum-title">APIs Úteis</div>
+                        </div>
+                        <p class="curriculum-desc">Integrações prontas: notificações, mapas, pagamentos. Expanda o que seu MVP pode fazer.</p>
+                    </div>
+                    <div class="curriculum-card">
+                        <div class="curriculum-header">
+                            <div class="curriculum-num">08</div>
+                            <div class="curriculum-title">Demo Day</div>
+                        </div>
+                        <p class="curriculum-desc">Apresente seu MVP, receba feedback, veja o que os outros criaram. Networking com a turma.</p>
+                    </div>
+                </div>
+                <div class="encontro-entrega">
+                    <strong>Entregável:</strong> MVP com IA integrada, pronto pra mostrar pra cliente
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Datas -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-cmd">$ cal março 2026</div>
+                <h2 class="section-title">Datas e horários</h2>
+            </div>
+
+            <div class="schedule-grid">
+                <div class="schedule-card">
+                    <div class="schedule-day">ENCONTRO 1</div>
+                    <div class="schedule-date">21 de Março</div>
+                    <div class="schedule-time">Sábado, 9h às 13h</div>
+                    <div class="schedule-format">Online · Ao vivo · 4 horas</div>
+                </div>
+                <div class="schedule-card">
+                    <div class="schedule-day">ENCONTRO 2</div>
+                    <div class="schedule-date">28 de Março</div>
+                    <div class="schedule-time">Sábado, 9h às 13h</div>
+                    <div class="schedule-format">Online · Ao vivo · 4 horas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Garantia -->
+    <section class="section section-dark">
+        <div class="section-container" style="max-width: 700px;">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <span class="terminal-title">garantia.sh</span>
+                </div>
+                <div class="guarantee-body">
+                    <div class="guarantee-cmd">
+                        <span class="prompt">$</span> ./garantia --incondicional --dias=7
+                    </div>
+                    <h3 class="guarantee-title">Garantia de <span>7 dias</span> ou seu dinheiro de volta</h3>
+                    <p class="guarantee-text">
+                        Participe do primeiro encontro. Se por <strong>qualquer motivo</strong> você achar que o curso não é pra você, manda um email e devolvemos <strong>100% do seu dinheiro</strong>.
+                    </p>
+                    <div class="guarantee-output">
+                        <div class="line comment"># sem perguntas</div>
+                        <div class="line comment"># sem burocracia</div>
+                        <div class="line comment"># sem letras miúdas</div>
+                        <div class="line" style="margin-top: 0.75rem;">→ O risco é todo meu.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <div class="section-container" style="max-width: 700px;">
+            <div class="section-header">
+                <div class="section-cmd">$ man lovable-ej</div>
+                <h2 class="section-title">Perguntas frequentes</h2>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Preciso saber programar?</div>
+                <div class="faq-answer">
+                    Não! Lovable foi feito pra quem não programa. Você descreve o que quer e a IA constrói. O curso ensina a fazer isso da forma mais eficiente.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">O que é o Lovable Pro que está incluso?</div>
+                <div class="faq-answer">
+                    Lovable Pro é a assinatura que dá acesso a todas as funcionalidades da plataforma. Normalmente custa $20/mês (~R$100). Você recebe 1 mês incluso no curso para praticar.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">As aulas ficam gravadas?</div>
+                <div class="faq-answer">
+                    Sim! Todas as aulas são gravadas e você recebe acesso para assistir depois. Mas recomendo participar ao vivo para tirar dúvidas e praticar junto.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Posso parcelar?</div>
+                <div class="faq-answer">
+                    Sim! Você pode parcelar em até 12x de R$74,17 sem juros no cartão. Se preferir pagar via PIX, o valor fica R$783,20 (12% de desconto).
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">E se eu não puder em uma das datas?</div>
+                <div class="faq-answer">
+                    Você recebe a gravação da aula que perdeu. Mas tenta participar ao vivo se possível, a experiência é melhor e você pode tirar dúvidas na hora.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Qual a diferença pro curso de Claude Code?</div>
+                <div class="faq-answer">
+                    Claude Code é mais técnico — você trabalha direto no terminal, cria arquivos, roda comandos. Lovable é visual e não precisa de código. Se você quer criar MVPs sem saber programar, Lovable é o caminho.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">E se eu não gostar do curso?</div>
+                <div class="faq-answer">
+                    Você tem 7 dias de garantia incondicional. Participou do primeiro encontro e não curtiu? Manda um email pedindo reembolso e devolvemos 100% do valor. Sem perguntas, sem burocracia.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-final">
+        <h2>Bora criar MVPs que impressionam?</h2>
+        <p><span style="color: var(--terminal-amber); font-weight: 600;">● 27 vagas restantes</span> · 2 sábados, e você sai entregando produto de verdade.</p>
+        <div class="cta-buttons">
+            <a href="https://payment-link-v3.ton.com.br/pl_nPwBlba16yxJnk8FybH6vANg7QRGXZ49" class="btn btn-primary" target="_blank">
+                Garantir minha vaga
+            </a>
+            <a href="https://wa.me/5524992679147?text=Oi!%20Tenho%20uma%20dúvida%20sobre%20o%20curso%20de%20Lovable" class="btn btn-secondary">
+                Tirar dúvidas no WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="claude-code.html">Curso Claude Code</a>
+            <a href="index.html#programs">Outros cursos</a>
+        </div>
+        <div class="footer-copy">
+            © 2026 Mauá
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Mobile menu
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenu && navLinks) {
+            mobileMenu.addEventListener('click', () => {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.background = 'var(--terminal-bg)';
+                navLinks.style.padding = '1rem 2rem';
+                navLinks.style.borderBottom = '1px solid var(--terminal-border)';
+            });
+        }
+
+        // Typing effect
+        const phrases = [
+            "impressione clientes na primeira reunião",
+            "feche mais projetos por semestre",
+            "dobre o ticket médio da sua EJ",
+            "entregue em dias, não semanas",
+            "saia na frente da concorrência"
+        ];
+
+        const typingText = document.querySelector('.typing-text');
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 50;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isDeleting) {
+                typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 30;
+            } else {
+                typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 50;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                typingSpeed = 2000;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typingSpeed = 300;
+            }
+
+            setTimeout(type, typingSpeed);
+        }
+
+        // Start typing effect
+        setTimeout(type, 500);
+    </script>
+</body>
+</html>

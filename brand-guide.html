@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAUA — Brand Guide</title>
+
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --terminal-bg: #0D0D0D;
+        --terminal-surface: #1A1A1A;
+        --terminal-border: #2D2D2D;
+        --terminal-green: #4ADE80;
+        --terminal-amber: #F59E0B;
+        --terminal-cyan: #22D3EE;
+        --terminal-purple: #A78BFA;
+        --terminal-pink: #F472B6;
+        --terminal-red: #EF4444;
+        --terminal-blue: #60A5FA;
+        --text-primary: #E4E4E7;
+        --text-secondary: #A1A1AA;
+        --text-muted: #71717A;
+        --claude-orange: #D97706;
+        --claude-orange-light: #FBBF24;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'JetBrains Mono', 'Courier New', monospace;
+        background-color: var(--terminal-bg);
+        color: var(--text-primary);
+        line-height: 1.7;
+        font-size: 14px;
+    }
+
+    ::selection {
+        background: var(--claude-orange);
+        color: var(--terminal-bg);
+    }
+
+    /* Scanline effect */
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background: repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.1) 0px,
+            rgba(0, 0, 0, 0.1) 1px,
+            transparent 1px,
+            transparent 2px
+        );
+        z-index: 9999;
+        opacity: 0.3;
+    }
+
+    /* Navigation */
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(13, 13, 13, 0.95);
+        border-bottom: 1px solid var(--terminal-border);
+        backdrop-filter: blur(10px);
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--claude-orange);
+        text-decoration: none;
+    }
+
+    .logo::before {
+        content: '> ';
+        color: var(--terminal-green);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.875rem;
+        transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+        color: var(--terminal-green);
+    }
+
+    .nav-links a::before {
+        content: './';
+        color: var(--text-muted);
+    }
+
+    .nav-cta {
+        background: var(--terminal-surface);
+        border: 1px solid var(--claude-orange);
+        color: var(--claude-orange) !important;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+    }
+
+    .nav-cta::before {
+        content: '$ ' !important;
+        color: var(--terminal-green) !important;
+    }
+
+    .nav-cta:hover {
+        background: var(--claude-orange);
+        color: var(--terminal-bg) !important;
+    }
+
+    .mobile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+    }
+
+    .mobile-menu span {
+        width: 20px;
+        height: 2px;
+        background: var(--terminal-green);
+    }
+
+    /* Terminal Window Component */
+    .terminal-window {
+        background: var(--terminal-surface);
+        border: 1px solid var(--terminal-border);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .terminal-header {
+        background: var(--terminal-border);
+        padding: 0.75rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .terminal-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+    }
+
+    .terminal-dot.red { background: #FF5F56; }
+    .terminal-dot.yellow { background: #FFBD2E; }
+    .terminal-dot.green { background: #27CA40; }
+
+    .terminal-title {
+        margin-left: 1rem;
+        color: var(--text-muted);
+        font-size: 0.75rem;
+    }
+
+    .terminal-body {
+        padding: 1.5rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6rem 2rem 4rem;
+        position: relative;
+    }
+
+    .hero-content {
+        max-width: 900px;
+        width: 100%;
+    }
+
+    .hero-terminal {
+        margin-bottom: 2rem;
+    }
+
+    .command-line {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 0.5rem;
+    }
+
+    .prompt {
+        color: var(--terminal-green);
+        margin-right: 0.5rem;
+        user-select: none;
+    }
+
+    .command {
+        color: var(--claude-orange);
+    }
+
+    .output {
+        color: var(--text-secondary);
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-ascii {
+        color: var(--claude-orange);
+        font-size: 0.6rem;
+        line-height: 1.2;
+        margin: 2rem 0;
+        opacity: 0.8;
+    }
+
+    .hero-title {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        font-weight: 700;
+        margin: 1.5rem 0;
+        line-height: 1.3;
+    }
+
+    .hero-title .highlight {
+        color: var(--claude-orange);
+    }
+
+    .hero-subtitle {
+        color: var(--text-secondary);
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .typing-cursor {
+        display: inline-block;
+        width: 10px;
+        height: 1.2em;
+        background: var(--terminal-green);
+        animation: blink 1s step-end infinite;
+        vertical-align: text-bottom;
+        margin-left: 2px;
+    }
+
+    @keyframes blink {
+        50% { opacity: 0; }
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+    }
+
+    .btn {
+        padding: 0.875rem 1.5rem;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.875rem;
+        text-decoration: none;
+        transition: all 0.2s;
+        cursor: pointer;
+        border: 1px solid transparent;
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .btn-primary {
+        background: var(--claude-orange);
+        color: var(--terminal-bg);
+        border-color: var(--claude-orange);
+    }
+
+    .btn-primary:hover {
+        background: var(--claude-orange-light);
+        border-color: var(--claude-orange-light);
+    }
+
+    .btn-secondary {
+        background: transparent;
+        color: var(--text-primary);
+        border-color: var(--terminal-border);
+    }
+
+    .btn-secondary:hover {
+        border-color: var(--terminal-green);
+        color: var(--terminal-green);
+    }
+
+    /* Stats as terminal output */
+    .stats-terminal {
+        margin-top: 3rem;
+    }
+
+    .stat-line {
+        display: flex;
+        align-items: center;
+        padding: 0.25rem 0;
+        font-size: 0.875rem;
+    }
+
+    .stat-key {
+        color: var(--terminal-cyan);
+        min-width: 180px;
+    }
+
+    .stat-value {
+        color: var(--terminal-green);
+        font-weight: 600;
+    }
+
+    /* Programs Section */
+    .programs {
+        padding: 6rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .section-header {
+        margin-bottom: 3rem;
+    }
+
+    .section-command {
+        color: var(--terminal-green);
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+        color: var(--text-secondary);
+        font-family: 'Inter', sans-serif;
+    }
+
+    .programs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .program-card {
+        background: var(--terminal-surface);
+        border: 1px solid var(--terminal-border);
+        border-radius: 8px;
+        overflow: hidden;
+        transition: all 0.3s;
+    }
+
+    .program-card:hover {
+        border-color: var(--claude-orange);
+        transform: translateY(-2px);
+    }
+
+    .program-header {
+        background: var(--terminal-border);
+        padding: 0.75rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .program-dots {
+        display: flex;
+        gap: 6px;
+    }
+
+    .program-badge {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 3px;
+        font-weight: 600;
+    }
+
+    .badge-pm {
+        background: rgba(96, 165, 250, 0.2);
+        color: var(--terminal-blue);
+    }
+
+    .badge-nocode {
+        background: rgba(167, 139, 250, 0.2);
+        color: var(--terminal-purple);
+    }
+
+    .badge-dev {
+        background: rgba(74, 222, 128, 0.2);
+        color: var(--terminal-green);
+    }
+
+    .badge-ej {
+        background: rgba(251, 191, 36, 0.2);
+        color: var(--claude-orange-light);
+    }
+
+    /* EJ Section - Special highlight */
+    .ej-section {
+        padding: 6rem 2rem;
+        background: linear-gradient(180deg, var(--terminal-bg) 0%, rgba(217, 119, 6, 0.05) 50%, var(--terminal-bg) 100%);
+        border-top: 1px solid var(--terminal-border);
+        border-bottom: 1px solid var(--terminal-border);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .ej-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--claude-orange), transparent);
+    }
+
+    .ej-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .ej-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .ej-content h2 {
+        font-size: 2rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .ej-content h2 .highlight {
+        color: var(--claude-orange);
+    }
+
+    .ej-content .ej-tagline {
+        color: var(--terminal-green);
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .ej-content .ej-tagline::before {
+        content: '>';
+        color: var(--claude-orange);
+    }
+
+    .ej-content p {
+        color: var(--text-secondary);
+        font-family: 'Inter', sans-serif;
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+    .ej-metrics {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: var(--terminal-surface);
+        border: 1px solid var(--terminal-border);
+        border-radius: 8px;
+    }
+
+    .ej-metric {
+        text-align: center;
+    }
+
+    .ej-metric-value {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--claude-orange);
+        display: block;
+    }
+
+    .ej-metric-label {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        margin-top: 0.25rem;
+    }
+
+    .ej-benefits {
+        list-style: none;
+        margin: 1.5rem 0;
+    }
+
+    .ej-benefits li {
+        padding: 0.5rem 0;
+        color: var(--text-secondary);
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .ej-benefits li::before {
+        content: '✓';
+        color: var(--terminal-green);
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    .ej-card {
+        background: var(--terminal-surface);
+        border: 2px solid var(--claude-orange);
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .ej-card::before {
+        content: 'PROGRAMA ESPECIAL';
+        position: absolute;
+        top: 1rem;
+        right: -2rem;
+        background: var(--claude-orange);
+        color: var(--terminal-bg);
+        padding: 0.25rem 3rem;
+        font-size: 0.6rem;
+        font-weight: 700;
+        transform: rotate(45deg);
+    }
+
+    .ej-card-header {
+        background: rgba(217, 119, 6, 0.1);
+        padding: 1.5rem;
+        border-bottom: 1px dashed var(--terminal-border);
+    }
+
+    .ej-card-header h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .ej-card-header p {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+    }
+
+    .ej-card-body {
+        padding: 1.5rem;
+    }
+
+    .ej-card-features {
+        list-style: none;
+        margin-bottom: 1.5rem;
+    }
+
+    .ej-card-features li {
+        padding: 0.5rem 0;
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .ej-card-features li::before {
+        content: '│';
+        color: var(--claude-orange);
+        margin-right: 0.75rem;
+    }
+
+    .ej-card-price {
+        background: var(--terminal-bg);
+        padding: 1rem;
+        border-radius: 6px;
+        margin-bottom: 1rem;
+    }
+
+    .ej-card-price .price-from {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+    }
+
+    .ej-card-price .price-main {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: var(--terminal-green);
+    }
+
+    .ej-card-price .price-detail {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+    }
+
+    .ej-testimonial {
+        margin-top: 2rem;
+        padding: 1rem;
+        background: var(--terminal-bg);
+        border-left: 2px solid var(--claude-orange);
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        font-style: italic;
+    }
+
+    .ej-testimonial cite {
+        display: block;
+        margin-top: 0.5rem;
+        color: var(--text-muted);
+        font-style: normal;
+        font-size: 0.75rem;
+    }
+
+    /* EJ Banner - Simplified */
+    .ej-banner {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 3rem;
+        align-items: center;
+    }
+
+    .ej-banner-content h2 {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+    }
+
+    .ej-banner-content p {
+        color: var(--text-secondary);
+        font-family: 'Inter', sans-serif;
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .ej-banner-stats {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .ej-banner-stat {
+        text-align: center;
+    }
+
+    .ej-banner-stat .stat-value {
+        display: block;
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: var(--claude-orange);
+    }
+
+    .ej-banner-stat .stat-label {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+    }
+
+    .ej-banner-quote {
+        background: var(--terminal-surface);
+        border: 1px solid var(--claude-orange);
+        border-radius: 8px;
+        padding: 2rem;
+    }
+
+    .ej-banner-quote blockquote {
+        color: var(--text-secondary);
+        font-family: 'Inter', sans-serif;
+        font-style: italic;
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .ej-banner-quote cite {
+        color: var(--claude-orange);
+        font-style: normal;
+        font-weight: 600;
+    }
+
+    @media (max-width: 900px) {
+        .ej-banner {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .ej-banner-stats {
+            justify-content: center;
+        }
+    }
+
+    .program-body {
+        padding: 1.5rem;
+    }
+
+    .program-title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+    }
+
+    .program-desc {
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+        margin-bottom: 1.5rem;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .program-features {
+        list-style: none;
+        margin-bottom: 1.5rem;
+        font-size: 0.8rem;
+    }
+
+    .program-features li {
+        padding: 0.4rem 0;
+        color: var(--text-secondary);
+        display: flex;
+        align-items: center;
+    }
+
+    .program-features li::before {
+        content: '├──';
+        color: var(--text-muted);
+        margin-right: 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    .program-features li:last-child::before {
+        content: '└──';
+    }
+
+    .program-price {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px dashed var(--terminal-border);
+    }
+
+    .price-label {
+        color: var(--text-muted);
+        font-size: 0.75rem;
+    }
+
+    .price-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--terminal-green);
+    }
+
+    .price-period {
+        color: var(--text-muted);
+        font-size: 0.75rem;
+    }
+
+    .program-btn {
+        width: 100%;
+        text-align: center;
+        display: block;
+    }
+
+    /* Features Section */
+    .features {
+        padding: 6rem 2rem;
+        background: var(--terminal-surface);
+        border-top: 1px solid var(--terminal-border);
+        border-bottom: 1px solid var(--terminal-border);
+    }
+
+    .features-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+    }
+
+    .feature-item {
+        padding: 1.25rem;
+        border: 1px solid var(--terminal-border);
+        border-radius: 6px;
+        background: var(--terminal-bg);
+    }
+
+    .feature-cmd {
+        color: var(--terminal-green);
+        font-size: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .feature-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--claude-orange);
+    }
+
+    .feature-desc {
+        color: var(--text-secondary);
+        font-size: 0.8rem;
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* Testimonials as logs */
+    .testimonials {
+        padding: 6rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .testimonial-log {
+        background: var(--terminal-surface);
+        border: 1px solid var(--terminal-border);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .log-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        font-size: 0.75rem;
+    }
+
+    .log-timestamp {
+        color: var(--text-muted);
+    }
+
+    .log-level {
+        color: var(--terminal-green);
+        background: rgba(74, 222, 128, 0.1);
+        padding: 0.125rem 0.5rem;
+        border-radius: 3px;
+    }
+
+    .log-source {
+        color: var(--terminal-cyan);
+    }
+
+    .log-message {
+        color: var(--text-secondary);
+        font-family: 'Inter', sans-serif;
+        font-size: 0.95rem;
+        padding-left: 1rem;
+        border-left: 2px solid var(--terminal-border);
+        margin-bottom: 1rem;
+    }
+
+    .log-author {
+        font-size: 0.8rem;
+    }
+
+    .log-author strong {
+        color: var(--text-primary);
+    }
+
+    .log-author span {
+        color: var(--text-muted);
+    }
+
+    /* FAQ as man page */
+    .faq {
+        padding: 6rem 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .faq-intro {
+        background: var(--terminal-surface);
+        border: 1px solid var(--terminal-border);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        font-size: 0.875rem;
+    }
+
+    .faq-intro-title {
+        color: var(--claude-orange);
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .faq-item {
+        border-bottom: 1px solid var(--terminal-border);
+        padding: 1.25rem 0;
+    }
+
+    .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--text-primary);
+    }
+
+    .faq-question::before {
+        content: '?';
+        color: var(--claude-orange);
+        margin-right: 1rem;
+        font-weight: 700;
+    }
+
+    .faq-question::after {
+        content: '[+]';
+        color: var(--text-muted);
+        font-size: 0.75rem;
+        transition: color 0.2s;
+    }
+
+    .faq-item.active .faq-question::after {
+        content: '[-]';
+        color: var(--terminal-green);
+    }
+
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        color: var(--text-secondary);
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .faq-item.active .faq-answer {
+        max-height: 200px;
+        padding-top: 1rem;
+        padding-left: 1.5rem;
+    }
+
+    /* CTA Section */
+    .cta {
+        padding: 6rem 2rem;
+        text-align: center;
+    }
+
+    .cta-terminal {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .cta-body {
+        padding: 2rem;
+    }
+
+    .cta h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .cta p {
+        color: var(--text-secondary);
+        font-family: 'Inter', sans-serif;
+        margin-bottom: 2rem;
+    }
+
+    /* Footer */
+    footer {
+        background: var(--terminal-surface);
+        border-top: 1px solid var(--terminal-border);
+        padding: 3rem 2rem 2rem;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 2rem;
+    }
+
+    .footer-brand p {
+        color: var(--text-secondary);
+        margin-top: 1rem;
+        font-size: 0.8rem;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .footer-column h4 {
+        font-weight: 600;
+        margin-bottom: 1rem;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+    }
+
+    .footer-column h4::before {
+        content: '# ';
+        color: var(--terminal-green);
+    }
+
+    .footer-column ul {
+        list-style: none;
+    }
+
+    .footer-column a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        display: block;
+        padding: 0.35rem 0;
+        font-size: 0.8rem;
+        transition: color 0.2s;
+    }
+
+    .footer-column a:hover {
+        color: var(--claude-orange);
+    }
+
+    .footer-column a::before {
+        content: '→ ';
+        color: var(--text-muted);
+    }
+
+    .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 2rem;
+        border-top: 1px solid var(--terminal-border);
+        color: var(--text-muted);
+        font-size: 0.75rem;
+    }
+
+    .footer-bottom::before {
+        content: '// ';
+        color: var(--terminal-green);
+    }
+
+    .social-links {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .social-links a {
+        padding: 0.5rem 0.75rem;
+        border: 1px solid var(--terminal-border);
+        border-radius: 4px;
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.7rem;
+        transition: all 0.2s;
+    }
+
+    .social-links a:hover {
+        border-color: var(--claude-orange);
+        color: var(--claude-orange);
+    }
+
+    /* Code animation */
+    .code-rain {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+        opacity: 0.03;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+
+        .mobile-menu {
+            display: flex;
+        }
+
+        .hero-ascii {
+            font-size: 0.35rem;
+        }
+
+        .programs-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .footer-bottom {
+            flex-direction: column;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .stat-line {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .stat-key {
+            min-width: auto;
+        }
+    }
+</style></head>
+<body>
+
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="logo">MAUA</a>
+      <ul class="nav-links">
+        <li><a href="#philosophy">philosophy</a></li>
+        <li><a href="#visual">visual</a></li>
+        <li><a href="#voice">voice</a></li>
+        <li><a href="#products">products</a></li>
+        <li><a href="#usage">usage</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="terminal-window hero-terminal">
+        <div class="terminal-header">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-title">maua.brand</span>
+        </div>
+        <div class="terminal-body">
+          <div class="command-line">
+            <span class="prompt">$</span>
+            <span class="command">whoami</span>
+          </div>
+          <div class="output">
+            MAUA is a digital shipyard for builders.<br/>
+            We help people turn ideas into working products — fast.
+          </div>
+        </div>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="highlight">MAUA</span><br/>
+        Estaleiro Digital para quem constrói com tecnologia
+      </h1>
+
+      <p class="hero-subtitle">
+        A brand built for a generation that ships products instead of waiting for permission.
+      </p>
+    </div>
+  </section>
+
+  <section id="philosophy" class="programs">
+    <div class="section-header">
+      <div class="section-command">$ cat philosophy.md</div>
+      <h2 class="section-title">Brand Philosophy</h2>
+      <p class="section-subtitle">Why MAUA exists and how it thinks</p>
+    </div>
+
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="program-body">
+          <h3 class="program-title">Digital Building Era</h3>
+          <p class="program-desc">
+            Software, AI, and no‑code tools turned entrepreneurship into a construction problem, not a permission problem.
+          </p>
+          <ul class="program-features">
+            <li>Ideas become artifacts</li>
+            <li>Speed beats polish</li>
+            <li>Learning happens by shipping</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="program-card">
+        <div class="program-body">
+          <h3 class="program-title">Estaleiro Digital</h3>
+          <p class="program-desc">
+            MAUA is not a school. It is a shipyard. People arrive with raw materials and leave with working machines.
+          </p>
+          <ul class="program-features">
+            <li>Guindastes = leverage</li>
+            <li>Ferramentas > teoria</li>
+            <li>Produto real como entrega final</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visual" class="features">
+    <div class="features-container">
+      <div class="section-header">
+        <div class="section-command">$ cat visual-system.md</div>
+        <h2 class="section-title">Visual Identity</h2>
+        <p class="section-subtitle">Terminal-first, industrial, utilitarian</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-cmd">// imagery</div>
+          <div class="feature-title">Industrial Metaphors</div>
+          <div class="feature-desc">
+            Estaleiros, guindastes, cabos, estruturas metálicas, containers, grids, ASCII diagrams.
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-cmd">// color</div>
+          <div class="feature-title">Terminal Palette</div>
+          <div class="feature-desc">
+            Dark backgrounds, high-contrast accents. Orange as action. Green as execution. Cyan as data.
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-cmd">// typography</div>
+          <div class="feature-title">Monospace by Default</div>
+          <div class="feature-desc">
+            JetBrains Mono for system voice. Inter only when readability is critical.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="voice" class="programs">
+    <div class="section-header">
+      <div class="section-command">$ cat voice-and-tone.md</div>
+      <h2 class="section-title">Voice & Tone</h2>
+      <p class="section-subtitle">How MAUA speaks</p>
+    </div>
+
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="program-body">
+          <h3 class="program-title">Principles</h3>
+          <ul class="program-features">
+            <li>Direct, never motivational</li>
+            <li>Technical, but not academic</li>
+            <li>Confident without hype</li>
+            <li>Opinionated through practice</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="program-card">
+        <div class="program-body">
+          <h3 class="program-title">Do / Don’t</h3>
+          <ul class="program-features">
+            <li>Do: ship, build, test, iterate</li>
+            <li>Do: reference tools and workflows</li>
+            <li>Don’t: promise passive income</li>
+            <li>Don’t: use startup buzzwords</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="products" class="ej-section">
+    <div class="ej-container">
+      <div class="section-header">
+        <div class="section-command">$ ls products/</div>
+        <h2 class="section-title">Products & Courses</h2>
+        <p class="section-subtitle">What MAUA builds and sells</p>
+      </div>
+
+      <div class="programs-grid">
+        <div class="program-card">
+          <div class="program-body">
+            <h3 class="program-title">Claude Code</h3>
+            <p class="program-desc">
+              Build production-grade software with Claude as a collaborator, not a toy.
+            </p>
+            <ul class="program-features">
+              <li>Prompting as architecture</li>
+              <li>Refactoring with AI</li>
+              <li>Solo dev workflows</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="program-card">
+          <div class="program-body">
+            <h3 class="program-title">Lovable</h3>
+            <p class="program-desc">
+              Rapid MVPs, prototypes, and internal tools using AI-native no-code.
+            </p>
+            <ul class="program-features">
+              <li>Idea → interface in hours</li>
+              <li>User testing fast loops</li>
+              <li>From prototype to product</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="usage" class="faq">
+    <div class="faq-intro">
+      <div class="faq-intro-title">Brand Usage</div>
+      MAUA should feel like a tool, not a lifestyle brand.
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Primary audience</div>
+      <div class="faq-answer">
+        Junior Enterprises, technical students, early builders. Brazil first, Europe later with higher-ticket offers.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Brand expansion</div>
+      <div class="faq-answer">
+        MAUA can host multiple programs, labs, and toolkits without changing identity.
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-bottom">
+        <span>MAUA — Digital Shipyard</span>
+        <span>build fast. ship real.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

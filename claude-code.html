@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code para EJs | Mauá</title>
+    <meta name="description" content="Aprenda Claude Code e capacite sua EJ para entregar projetos em dias, não semanas. Turma de Abril com Claude Pro incluso.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Hero Section - Course Pages */
+        .hero {
+            padding: 8rem 2rem 4rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 30% 0%, rgba(217, 119, 6, 0.12) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(217, 119, 6, 0.15);
+            border: 1px solid var(--claude-orange);
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            color: var(--claude-orange);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 .highlight {
+            color: var(--claude-orange);
+        }
+
+        .typing-container {
+            display: inline-block;
+            min-height: 1.2em;
+        }
+
+        .typing-text {
+            color: var(--terminal-green);
+            border-right: none;
+        }
+
+        .typing-cursor {
+            color: var(--terminal-green);
+            animation: blink 0.7s infinite;
+            font-weight: 400;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-details {
+            background: var(--terminal-surface);
+            border: 1px solid var(--terminal-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.6rem 0;
+            font-size: 0.9rem;
+        }
+
+        .hero-detail-item:not(:last-child) {
+            border-bottom: 1px dashed var(--terminal-border);
+        }
+
+        .hero-detail-icon {
+            color: var(--claude-orange);
+            font-size: 1.1rem;
+        }
+
+        .hero-detail-text {
+            color: var(--text-secondary);
+        }
+
+        .hero-detail-text strong {
+            color: var(--text-primary);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: 1px solid transparent;
+            font-family: 'JetBrains Mono', monospace;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--claude-orange);
+            color: var(--terminal-bg);
+        }
+
+        .btn-primary:hover {
+            background: var(--claude-orange-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20bd5a;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border-color: var(--terminal-border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--terminal-green);
+            color: var(--terminal-green);
+        }
+
+        /* Price Card */
+        .price-card {
+            background: var(--terminal-surface);
+            border: 2px solid var(--claude-orange);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .price-card-header {
+            background: rgba(217, 119, 6, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px dashed var(--terminal-border);
+        }
+
+        .price-card-header h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .price-card-header p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .price-dates {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 0.75rem 0;
+        }
+
+        .price-date {
+            background: var(--terminal-bg);
+            border: 2px solid var(--terminal-green);
+            color: var(--terminal-green);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .price-date-sep {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .price-card-body {
+            padding: 1.5rem;
+        }
+
+        .price-main {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-installment-main {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .price-installment-main span {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--terminal-green);
+        }
+
+        .price-or {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            margin: 0.5rem 0;
+        }
+
+        .price-cash {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--claude-orange);
+        }
+
+        .price-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--terminal-green);
+        }
+
+        .price-period {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .price-includes {
+            background: var(--terminal-bg);
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-includes-title {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-includes-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .price-includes-item::before {
+            content: '✓';
+            color: var(--terminal-green);
+            font-weight: 700;
+        }
+
+        .price-highlight {
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid var(--terminal-green);
+            border-radius: 6px;
+            padding: 0.75rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--terminal-green);
+        }
+
+        .price-cta {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .price-slots {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Section styling */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-dark {
+            background: var(--terminal-surface);
+            border-top: 1px solid var(--terminal-border);
+            border-bottom: 1px solid var(--terminal-border);
+        }
+
+        .section-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-cmd {
+            color: var(--terminal-green);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Problem/Solution */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .problem-card {
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--terminal-border);
+            background: var(--terminal-bg);
+        }
+
+        .problem-card.bad {
+            border-color: rgba(239, 68, 68, 0.5);
+        }
+
+        .problem-card.good {
+            border-color: rgba(74, 222, 128, 0.5);
+        }
+
+        .problem-card-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .problem-card.bad .problem-card-title {
+            color: var(--terminal-red);
+        }
+
+        .problem-card.good .problem-card-title {
+            color: var(--terminal-green);
+        }
+
+        .problem-card ul {
+            list-style: none;
+        }
+
+        .problem-card li {
+            padding: 0.4rem 0;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .problem-card.bad li::before {
+            content: '✗';
+            color: var(--terminal-red);
+        }
+
+        .problem-card.good li::before {
+            content: '✓';
+            color: var(--terminal-green);
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            background: var(--terminal-surface);
+            border: 1px solid var(--terminal-border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            border-bottom: 1px solid var(--terminal-border);
+        }
+
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-row.header {
+            background: var(--terminal-border);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .comparison-cell {
+            padding: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .comparison-cell:not(:last-child) {
+            border-right: 1px solid var(--terminal-border);
+        }
+
+        .comparison-cell.feature {
+            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .comparison-cell.no {
+            color: var(--text-muted);
+        }
+
+        .comparison-cell.yes {
+            color: var(--terminal-green);
+        }
+
+        .comparison-note {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(217, 119, 6, 0.1);
+            border: 1px solid var(--claude-orange);
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-secondary);
+        }
+
+        .comparison-note strong {
+            color: var(--claude-orange);
+        }
+
+        /* Encontro Blocks */
+        .encontro-block {
+            margin-bottom: 2rem;
+        }
+
+        .encontro-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .encontro-tag {
+            display: inline-block;
+            background: var(--claude-orange);
+            color: var(--terminal-bg);
+            padding: 0.3rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .encontro-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .encontro-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Curriculum */
+        .curriculum-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .curriculum-card {
+            background: var(--terminal-surface);
+            border: 1px solid var(--terminal-border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            transition: border-color 0.2s;
+        }
+
+        .curriculum-card:hover {
+            border-color: var(--claude-orange);
+        }
+
+        .curriculum-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .curriculum-num {
+            width: 28px;
+            height: 28px;
+            background: var(--claude-orange);
+            color: var(--terminal-bg);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .curriculum-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .curriculum-desc {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Schedule */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .schedule-card {
+            background: var(--terminal-surface);
+            border: 1px solid var(--terminal-border);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .schedule-day {
+            font-size: 0.8rem;
+            color: var(--claude-orange);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .schedule-date {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .schedule-time {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .schedule-format {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed var(--terminal-border);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Guarantee */
+        .guarantee-body {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .guarantee-cmd {
+            color: var(--terminal-green);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .guarantee-cmd .prompt {
+            color: var(--claude-orange);
+        }
+
+        .guarantee-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .guarantee-title span {
+            color: var(--terminal-green);
+        }
+
+        .guarantee-text {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .guarantee-text strong {
+            color: var(--text-primary);
+        }
+
+        .guarantee-output {
+            background: var(--terminal-bg);
+            border-radius: 6px;
+            padding: 1rem;
+            text-align: left;
+            font-size: 0.85rem;
+            color: var(--terminal-green);
+        }
+
+        .guarantee-output .line {
+            margin: 0.3rem 0;
+        }
+
+        .guarantee-output .comment {
+            color: var(--text-muted);
+        }
+
+        /* FAQ */
+        .faq-item {
+            border-bottom: 1px solid var(--terminal-border);
+            padding: 1.25rem 0;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .faq-question::before {
+            content: '?';
+            color: var(--claude-orange);
+            margin-right: 1rem;
+        }
+
+        .faq-question::after {
+            content: '+';
+            color: var(--text-muted);
+            font-size: 1.25rem;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '−';
+            color: var(--terminal-green);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s;
+            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding-top: 1rem;
+            padding-left: 1.75rem;
+        }
+
+        /* CTA Final */
+        .cta-final {
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .cta-final h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-final p {
+            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--terminal-bg);
+            border-top: 1px solid var(--terminal-border);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--claude-orange);
+        }
+
+        .footer-copy {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .problem-grid,
+            .curriculum-grid,
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-row {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-cell:not(:last-child) {
+                border-right: none;
+                border-bottom: 1px solid var(--terminal-border);
+            }
+
+            .comparison-row.header {
+                display: none;
+            }
+
+            .comparison-cell::before {
+                content: attr(data-label);
+                display: block;
+                font-size: 0.7rem;
+                color: var(--text-muted);
+                margin-bottom: 0.25rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">MAUA · EJs</a>
+            <ul class="nav-links">
+                <li><a href="index.html#programs">programas</a></li>
+                <li><a href="lovable.html" style="color: #EC4899;">lovable</a></li>
+                <li><a href="claude-code.html" style="color: var(--claude-orange);">claude code</a></li>
+                <li><a href="https://payment-link-v3.ton.com.br/pl_Av06yQbJj2Eqwq4sGIzxle1GgL8PkoBD" class="nav-cta">Garantir vaga</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-tag">CURSO ONLINE AO VIVO — ABRIL 2026</div>
+                <h1>
+                    Aprenda <span class="highlight">Claude Code</span> e<br>
+                    <span class="typing-container">
+                        <span class="typing-text"></span>
+                        <span class="typing-cursor">|</span>
+                    </span>
+                </h1>
+                <p class="hero-subtitle">
+                    A IA que não só responde — ela <strong>executa</strong>. Cria arquivos, roda código, builda projetos inteiros. Sua EJ vai entregar mais, em menos tempo, cobrando mais caro.
+                </p>
+
+                <div class="hero-details">
+                    <div class="hero-detail-item">
+                        <span class="hero-detail-icon">📅</span>
+                        <span class="hero-detail-text"><strong>2 sábados:</strong> 11 e 18 de abril</span>
+                    </div>
+                    <div class="hero-detail-item">
+                        <span class="hero-detail-icon">⏰</span>
+                        <span class="hero-detail-text"><strong>Horário:</strong> 9h às 13h (4 horas cada)</span>
+                    </div>
+                    <div class="hero-detail-item">
+                        <span class="hero-detail-icon">💻</span>
+                        <span class="hero-detail-text"><strong>Formato:</strong> Online, ao vivo, mão na massa</span>
+                    </div>
+                    <div class="hero-detail-item">
+                        <span class="hero-detail-icon">🎁</span>
+                        <span class="hero-detail-text"><strong>Incluso:</strong> Claude Pro (1 mês) — valor de R$120</span>
+                    </div>
+                </div>
+
+                <div class="hero-cta">
+                    <a href="https://payment-link-v3.ton.com.br/pl_Av06yQbJj2Eqwq4sGIzxle1GgL8PkoBD" class="btn btn-primary">
+                        Garantir minha vaga
+                    </a>
+                    <a href="#conteudo" class="btn btn-secondary">Ver conteúdo</a>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-header">
+                    <h3>Próxima turma</h3>
+                    <div class="price-dates">
+                        <span class="price-date">11/abr</span>
+                        <span class="price-date-sep">e</span>
+                        <span class="price-date">18/abr</span>
+                    </div>
+                    <p>Sábados · 9h às 13h · Online</p>
+                </div>
+                <div class="price-card-body">
+                    <div class="price-main">
+                        <div class="price-installment-main">12x de <span>R$ 152,41</span></div>
+                        <div class="price-or">ou</div>
+                        <div class="price-cash">R$ 1.341 à vista no PIX</div>
+                    </div>
+
+                    <div class="price-highlight">
+                        Claude Pro incluso (1 mês) — economize R$120
+                    </div>
+
+                    <div class="price-includes">
+                        <div class="price-includes-title">O que está incluso:</div>
+                        <div class="price-includes-item">8 horas de curso ao vivo</div>
+                        <div class="price-includes-item">Claude Pro por 1 mês</div>
+                        <div class="price-includes-item">Gravação das aulas</div>
+                        <div class="price-includes-item">Material de apoio</div>
+                        <div class="price-includes-item">Grupo de alunos</div>
+                    </div>
+
+                    <a href="https://payment-link-v3.ton.com.br/pl_Av06yQbJj2Eqwq4sGIzxle1GgL8PkoBD" class="btn btn-primary price-cta">
+                        Quero participar
+                    </a>
+
+                    <div class="price-slots">30 vagas disponíveis</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problema -->
+    <section class="section section-dark">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-cmd">$ diff --situacao-atual --com-claude-code</div>
+                <h2 class="section-title">O problema que você conhece</h2>
+            </div>
+
+            <div class="problem-grid">
+                <div class="problem-card bad">
+                    <div class="problem-card-title">
+                        ✗ Usando só ChatGPT
+                    </div>
+                    <ul>
+                        <li>Copia e cola código sem parar</li>
+                        <li>Perde tempo organizando arquivos manualmente</li>
+                        <li>Não consegue testar direto, tem que configurar tudo</li>
+                        <li>Projetos que levam semanas para sair</li>
+                        <li>Cliente espera, você corre</li>
+                    </ul>
+                </div>
+
+                <div class="problem-card good">
+                    <div class="problem-card-title">
+                        ✓ Com Claude Code
+                    </div>
+                    <ul>
+                        <li>IA cria e edita arquivos direto no seu projeto</li>
+                        <li>Executa comandos no terminal automaticamente</li>
+                        <li>Builda e testa em tempo real</li>
+                        <li>Protótipo funcional em horas</li>
+                        <li>Mostra pro cliente na primeira reunião</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparação -->
+    <section class="section" id="comparacao">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-cmd">$ compare chatgpt claude-code</div>
+                <h2 class="section-title">ChatGPT vs Claude Code</h2>
+                <p class="section-subtitle">Por que Claude Code é o próximo nível</p>
+            </div>
+
+            <div class="comparison-table">
+                <div class="comparison-row header">
+                    <div class="comparison-cell">Funcionalidade</div>
+                    <div class="comparison-cell">ChatGPT</div>
+                    <div class="comparison-cell">Claude Code</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell feature" data-label="Funcionalidade">Responde perguntas sobre código</div>
+                    <div class="comparison-cell yes" data-label="ChatGPT">✓ Sim</div>
+                    <div class="comparison-cell yes" data-label="Claude Code">✓ Sim</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell feature" data-label="Funcionalidade">Cria arquivos no seu computador</div>
+                    <div class="comparison-cell no" data-label="ChatGPT">✗ Não</div>
+                    <div class="comparison-cell yes" data-label="Claude Code">✓ Sim, direto</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell feature" data-label="Funcionalidade">Executa comandos no terminal</div>
+                    <div class="comparison-cell no" data-label="ChatGPT">✗ Não</div>
+                    <div class="comparison-cell yes" data-label="Claude Code">✓ Sim</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell feature" data-label="Funcionalidade">Navega e edita seu código existente</div>
+                    <div class="comparison-cell no" data-label="ChatGPT">✗ Não</div>
+                    <div class="comparison-cell yes" data-label="Claude Code">✓ Sim</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell feature" data-label="Funcionalidade">Roda testes automaticamente</div>
+                    <div class="comparison-cell no" data-label="ChatGPT">✗ Não</div>
+                    <div class="comparison-cell yes" data-label="Claude Code">✓ Sim</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell feature" data-label="Funcionalidade">Builda projetos inteiros</div>
+                    <div class="comparison-cell no" data-label="ChatGPT">✗ Não</div>
+                    <div class="comparison-cell yes" data-label="Claude Code">✓ Do zero ao deploy</div>
+                </div>
+            </div>
+
+            <div class="comparison-note">
+                <strong>Resumo:</strong> ChatGPT conversa sobre código. Claude Code escreve, executa e entrega.
+            </div>
+        </div>
+    </section>
+
+    <!-- Conteúdo -->
+    <section class="section section-dark" id="conteudo">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-cmd">$ ls ./modulos/</div>
+                <h2 class="section-title">O que você vai aprender</h2>
+                <p class="section-subtitle">8 horas, 100% mão na massa, focado na realidade da sua EJ</p>
+            </div>
+
+            <!-- Encontro 1 -->
+            <div class="encontro-block">
+                <div class="encontro-header">
+                    <span class="encontro-tag">ENCONTRO 1 — 11 DE ABRIL</span>
+                    <h3 class="encontro-title">Processos, Pesquisa e Produtividade</h3>
+                    <p class="encontro-desc">Automatize a gestão interna e entregue projetos de consultoria em outro nível</p>
+                </div>
+                <div class="curriculum-grid">
+                    <div class="curriculum-card">
+                        <div class="curriculum-header">
+                            <div class="curriculum-num">01</div>
+                            <div class="curriculum-title">Setup + Primeiros Comandos</div>
+                        </div>
+                        <p class="curriculum-desc">Instalação e configuração. Em 30 minutos você já está operando o Claude Code.</p>
+                    </div>
+                    <div class="curriculum-card">
+                        <div class="curriculum-header">
+                            <div class="curriculum-num">02</div>
+                            <div class="curriculum-title">Gestão Interna da EJ</div>
+                        </div>
+                        <p class="curriculum-desc">Automatize processos internos, crie sistemas de controle, organize documentação e fluxos da sua EJ.</p>
+                    </div>
+                    <div class="curriculum-card">
+                        <div class="curriculum-header">
+                            <div class="curriculum-num">03</div>
+                            <div class="curriculum-title">Vendas e Prospecção</div>
+                        </div>
+                        <p class="curriculum-desc">Pesquisa de clientes, análise de mercado, criação de propostas e materiais comerciais com IA.</p>
+                    </div>
+                    <div class="curriculum-card">
+                        <div class="curriculum-header">
+                            <div class="curriculum-num">04</div>
+                            <div class="curriculum-title">Projetos de Pesquisa</div>
+                        </div>
+                        <p class="curriculum-desc">Consolide entrevistas, analise dados qualitativos, gere relatórios e monte materiais de entrega pro cliente.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Encontro 2 -->
+            <div class="encontro-block" style="margin-top: 3rem;">
+                <div class="encontro-header">
+                    <span class="encontro-tag">ENCONTRO 2 — 18 DE ABRIL</span>
+                    <h3 class="encontro-title">Building: Construindo Produtos Reais</h3>
+                    <p class="encontro-desc">Crie protótipos e MVPs funcionais para impressionar (e fechar) clientes</p>
+                </div>
+                <div class="curriculum-grid">
+                    <div class="curriculum-card">
+                        <div class="curriculum-header">
+                            <div class="curriculum-num">05</div>
+                            <div class="curriculum-title">Prototipagem Rápida</div>
+                        </div>
+                        <p class="curriculum-desc">Crie protótipos web e mobile do zero. Chegue na reunião com algo pra mostrar pro cliente.</p>
+                    </div>
+                    <div class="curriculum-card">
+                        <div class="curriculum-header">
+                            <div class="curriculum-num">06</div>
+                            <div class="curriculum-title">Do Protótipo ao MVP</div>
+                        </div>
+                        <p class="curriculum-desc">Conecte APIs reais, integre banco de dados e transforme o protótipo em produto funcional.</p>
+                    </div>
+                    <div class="curriculum-card">
+                        <div class="curriculum-header">
+                            <div class="curriculum-num">07</div>
+                            <div class="curriculum-title">Autenticação e Deploy</div>
+                        </div>
+                        <p class="curriculum-desc">Login de usuários, controle de acesso e como colocar o sistema no ar pra cliente acessar.</p>
+                    </div>
+                    <div class="curriculum-card">
+                        <div class="curriculum-header">
+                            <div class="curriculum-num">08</div>
+                            <div class="curriculum-title">Simulação: Briefing → Entrega</div>
+                        </div>
+                        <p class="curriculum-desc">Exercício real: receba um briefing de cliente e construa a solução ao vivo, do zero ao deploy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Datas -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-cmd">$ cal abril 2026</div>
+                <h2 class="section-title">Datas e horários</h2>
+            </div>
+
+            <div class="schedule-grid">
+                <div class="schedule-card">
+                    <div class="schedule-day">ENCONTRO 1</div>
+                    <div class="schedule-date">11 de Abril</div>
+                    <div class="schedule-time">Sábado, 9h às 13h</div>
+                    <div class="schedule-format">Online · Ao vivo · 4 horas</div>
+                </div>
+                <div class="schedule-card">
+                    <div class="schedule-day">ENCONTRO 2</div>
+                    <div class="schedule-date">18 de Abril</div>
+                    <div class="schedule-time">Sábado, 9h às 13h</div>
+                    <div class="schedule-format">Online · Ao vivo · 4 horas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Garantia -->
+    <section class="section section-dark">
+        <div class="section-container" style="max-width: 700px;">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <span class="terminal-title">garantia.sh</span>
+                </div>
+                <div class="guarantee-body">
+                    <div class="guarantee-cmd">
+                        <span class="prompt">$</span> ./garantia --incondicional --dias=7
+                    </div>
+                    <h3 class="guarantee-title">Garantia de <span>7 dias</span> ou seu dinheiro de volta</h3>
+                    <p class="guarantee-text">
+                        Participe do primeiro encontro. Se por <strong>qualquer motivo</strong> você achar que o curso não é pra você, manda um email e devolvemos <strong>100% do seu dinheiro</strong>.
+                    </p>
+                    <div class="guarantee-output">
+                        <div class="line comment"># sem perguntas</div>
+                        <div class="line comment"># sem burocracia</div>
+                        <div class="line comment"># sem letras miúdas</div>
+                        <div class="line" style="margin-top: 0.75rem;">→ O risco é todo meu.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <div class="section-container" style="max-width: 700px;">
+            <div class="section-header">
+                <div class="section-cmd">$ man curso-claude-ej</div>
+                <h2 class="section-title">Perguntas frequentes</h2>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Preciso saber programar?</div>
+                <div class="faq-answer">
+                    Conhecimento básico de programação ajuda, mas não precisa ser expert. O curso é prático e você vai aprender fazendo. Se você já mexeu com HTML, Python ou qualquer linguagem, vai conseguir acompanhar tranquilo.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">O que é o Claude Pro que está incluso?</div>
+                <div class="faq-answer">
+                    Claude Pro é a assinatura do Claude que dá acesso ao Claude Code. Normalmente custa $20/mês (~R$120). Você recebe 1 mês incluso no curso para praticar.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">As aulas ficam gravadas?</div>
+                <div class="faq-answer">
+                    Sim! Todas as aulas são gravadas e você recebe acesso para assistir depois. Mas recomendo participar ao vivo para tirar dúvidas e praticar junto.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Posso parcelar?</div>
+                <div class="faq-answer">
+                    Sim! Você pode parcelar em até 12x de R$152,41 no cartão. Se preferir pagar à vista via PIX, o valor fica R$1.341. Fala com a gente no WhatsApp para combinar.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">E se eu não puder em uma das datas?</div>
+                <div class="faq-answer">
+                    Você recebe a gravação da aula que perdeu. Mas tenta participar ao vivo se possível, a experiência é melhor e você pode tirar dúvidas na hora.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Serve pra minha EJ toda ou é individual?</div>
+                <div class="faq-answer">
+                    O valor é por pessoa. Se quiser trazer mais gente da sua EJ, fala com a gente no WhatsApp que fazemos condição especial para grupos.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">E se eu não gostar do curso?</div>
+                <div class="faq-answer">
+                    Você tem 7 dias de garantia incondicional. Participou do primeiro encontro e não curtiu? Manda um email pedindo reembolso e devolvemos 100% do valor. Sem perguntas, sem burocracia.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-final">
+        <h2>Bora dominar Claude Code?</h2>
+        <p>30 vagas, 2 sábados, e você sai entregando projeto de outro nível.</p>
+        <div class="cta-buttons">
+            <a href="https://payment-link-v3.ton.com.br/pl_Av06yQbJj2Eqwq4sGIzxle1GgL8PkoBD" class="btn btn-primary">
+                Garantir minha vaga
+            </a>
+            <a href="https://wa.me/5524992679147?text=Oi!%20Tenho%20uma%20dúvida%20sobre%20o%20curso%20de%20Claude%20Code" class="btn btn-secondary">
+                Tirar dúvidas no WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="lovable.html">Curso Lovable</a>
+            <a href="index.html#programs">Outros cursos</a>
+        </div>
+        <div class="footer-copy">
+            © 2026 Mauá
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Mobile menu
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenu && navLinks) {
+            mobileMenu.addEventListener('click', () => {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.background = 'var(--terminal-bg)';
+                navLinks.style.padding = '1rem 2rem';
+                navLinks.style.borderBottom = '1px solid var(--terminal-border)';
+            });
+        }
+
+        // Typing effect
+        const phrases = [
+            "entregue projetos em dias, não semanas",
+            "dobre o ticket médio da sua EJ",
+            "feche mais projetos por semestre",
+            "automatize a gestão interna",
+            "impressione clientes na primeira reunião",
+            "saia na frente da concorrência"
+        ];
+
+        const typingText = document.querySelector('.typing-text');
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 50;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isDeleting) {
+                typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 30;
+            } else {
+                typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 50;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                typingSpeed = 2000; // Pause at end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typingSpeed = 300; // Pause before new phrase
+            }
+
+            setTimeout(type, typingSpeed);
+        }
+
+        // Start typing effect
+        setTimeout(type, 500);
+    </script>
+</body>
+</html>
