@@ -794,6 +794,12 @@
             font-size: 0.75rem;
         }
 
+        /* Tools Grid */
+        .tool-item:hover {
+            opacity: 1 !important;
+            transform: translateY(-4px);
+        }
+
         /* Responsive */
         @media (max-width: 900px) {
             .hero-container {
@@ -822,7 +828,7 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="logo">MAUA · EJs</a>
+            <a href="index.html" class="logo">MAUA.pro · EJs</a>
             <ul class="nav-links">
                 <li><a href="index.html#programs">programas</a></li>
                 <li><a href="lovable.html" style="color: #EC4899;">lovable</a></li>
@@ -851,7 +857,7 @@
                     </span>
                 </h1>
                 <p class="hero-subtitle">
-                    Aprenda <strong>Lovable</strong> e chegue na reunião com o protótipo funcionando. Sua EJ vai fechar mais projetos, cobrar mais caro e entregar mais rápido.
+                    Aprenda <span style="display: inline-block; background: var(--terminal-surface); border: 1px solid var(--terminal-border); border-radius: 4px; padding: 0.2em 0.5em; vertical-align: middle; margin: 0 0.2em; line-height: 1;"><img src="logowhite.svg" alt="Lovable" style="height: 1em; width: auto; display: inline-block; vertical-align: middle;"></span> e chegue na reunião com o protótipo funcionando. Sua EJ vai fechar mais projetos, cobrar mais caro e entregar mais rápido.
                 </p>
 
                 <div class="hero-details">
@@ -916,6 +922,23 @@
                     </a>
 
                     <div class="price-slots" style="color: var(--terminal-amber); font-weight: 600;">● 27 vagas restantes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ferramentas Section -->
+    <section class="section" style="padding: 3rem 2rem;">
+        <div class="section-container">
+            <div class="section-header" style="margin-bottom: 2rem;">
+                <div class="section-cmd">$ ls ./ferramentas/</div>
+                <h2 class="section-title">Ferramenta que você vai dominar</h2>
+            </div>
+
+            <div class="tools-grid" style="display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap;">
+                <!-- Lovable - Official logo -->
+                <div class="tool-item" style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; opacity: 0.85; transition: opacity 0.2s;">
+                    <img src="logowhite.svg" alt="Lovable" style="height: 48px; width: auto;">
                 </div>
             </div>
         </div>

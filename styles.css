@@ -125,7 +125,7 @@ nav {
 }
 
 .nav-cta::before {
-    content: '$ ' !important;
+    content: '● ' !important;
     color: var(--terminal-green) !important;
 }
 
