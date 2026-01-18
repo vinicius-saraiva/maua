@@ -522,6 +522,95 @@
             font-family: 'Inter', sans-serif;
         }
 
+        /* Examples Grid */
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+        }
+
+        .example-card {
+            background: var(--terminal-surface);
+            border: 1px solid var(--terminal-border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .example-card:hover {
+            border-color: var(--lovable-pink);
+            transform: translateY(-2px);
+        }
+
+        .example-icon {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .example-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .example-desc {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+        }
+
+        .example-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .example-tags span {
+            background: rgba(236, 72, 153, 0.15);
+            color: var(--lovable-pink);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 500;
+        }
+
+        .examples-note {
+            margin-top: 2rem;
+            padding: 1.25rem;
+            background: var(--terminal-surface);
+            border: 1px dashed var(--terminal-border);
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .examples-note strong {
+            color: var(--lovable-pink);
+        }
+
+        @media (max-width: 1100px) {
+            .examples-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 800px) {
+            .examples-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Encontro Blocks */
         .encontro-block {
             margin-bottom: 2rem;
@@ -1237,8 +1326,147 @@
         </div>
     </section>
 
-    <!-- Problema -->
+    <!-- O que você pode construir -->
     <section class="section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-cmd">$ ls ./exemplos-de-mvps/</div>
+                <h2 class="section-title">O que você vai poder construir</h2>
+                <p class="section-subtitle">Exemplos reais de MVPs para qualquer área de EJ</p>
+            </div>
+
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-icon">📊</div>
+                    <div class="example-title">Dashboard Financeiro</div>
+                    <div class="example-desc">Controle de fluxo de caixa, receitas e despesas com gráficos interativos</div>
+                    <div class="example-tags">
+                        <span>Administração</span>
+                        <span>Economia</span>
+                        <span>Contábeis</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-icon">🏗️</div>
+                    <div class="example-title">Orçamento de Obra</div>
+                    <div class="example-desc">Calculadora de materiais, mão de obra e custos com exportação em PDF</div>
+                    <div class="example-tags">
+                        <span>Eng. Civil</span>
+                        <span>Arquitetura</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-icon">⚡</div>
+                    <div class="example-title">Dimensionamento Elétrico</div>
+                    <div class="example-desc">Cálculo de carga, disjuntores e cabeamento para instalações</div>
+                    <div class="example-tags">
+                        <span>Eng. Elétrica</span>
+                        <span>Eng. Eletrônica</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-icon">📋</div>
+                    <div class="example-title">Gerador de Propostas</div>
+                    <div class="example-desc">Sistema que monta propostas comerciais personalizadas automaticamente</div>
+                    <div class="example-tags">
+                        <span>Todas as EJs</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-icon">🏭</div>
+                    <div class="example-title">Dashboard de Produção</div>
+                    <div class="example-desc">KPIs de eficiência, OEE, controle de estoque e cronogramas</div>
+                    <div class="example-tags">
+                        <span>Eng. Produção</span>
+                        <span>Eng. Mecânica</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-icon">🧪</div>
+                    <div class="example-title">Fichas Técnicas</div>
+                    <div class="example-desc">Catálogo de formulações, processos e especificações técnicas</div>
+                    <div class="example-tags">
+                        <span>Eng. Química</span>
+                        <span>Farmácia</span>
+                        <span>Alimentos</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-icon">🌱</div>
+                    <div class="example-title">Calculadora de Insumos</div>
+                    <div class="example-desc">Dosagem de fertilizantes, defensivos e custo por hectare</div>
+                    <div class="example-tags">
+                        <span>Agronomia</span>
+                        <span>Gestão Ambiental</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-icon">⚖️</div>
+                    <div class="example-title">Gerador de Contratos</div>
+                    <div class="example-desc">Templates personalizáveis com cláusulas e cálculo de honorários</div>
+                    <div class="example-tags">
+                        <span>Direito</span>
+                        <span>Administração</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-icon">🎨</div>
+                    <div class="example-title">Portfólio Interativo</div>
+                    <div class="example-desc">Showcase de projetos com filtros, cases e formulário de contato</div>
+                    <div class="example-tags">
+                        <span>Design</span>
+                        <span>Marketing</span>
+                        <span>Arquitetura</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-icon">🍽️</div>
+                    <div class="example-title">Calculadora Nutricional</div>
+                    <div class="example-desc">Planejamento de cardápios, cálculo de macros e fichas técnicas</div>
+                    <div class="example-tags">
+                        <span>Nutrição</span>
+                        <span>Alimentos</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-icon">🔬</div>
+                    <div class="example-title">Banco de Dados de Espécies</div>
+                    <div class="example-desc">Catálogo com fotos, características e distribuição geográfica</div>
+                    <div class="example-tags">
+                        <span>Biologia</span>
+                        <span>Zootecnia</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-icon">📈</div>
+                    <div class="example-title">Dashboard de Dados</div>
+                    <div class="example-desc">Visualização interativa de pesquisas, surveys e análises</div>
+                    <div class="example-tags">
+                        <span>Estatística</span>
+                        <span>Economia</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="examples-note">
+                <strong>E muito mais:</strong> sistemas de agendamento, landing pages, catálogos de produtos, controle de projetos, simuladores... Se dá pra descrever, dá pra construir.
+            </div>
+        </div>
+    </section>
+
+    <!-- Problema -->
+    <section class="section section-dark">
         <div class="section-container">
             <div class="section-header">
                 <div class="section-cmd">$ diff --proposta-tradicional --com-lovable</div>
