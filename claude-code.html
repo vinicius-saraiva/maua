@@ -1559,6 +1559,20 @@
         // Start typing effect
         setTimeout(type, 500);
 
+        // Track payment button clicks
+        document.querySelectorAll('a[href*="payment-link"]').forEach(link => {
+            link.addEventListener('click', () => {
+                posthog.capture('payment_button_clicked', {
+                    course: 'claude-code',
+                    button_location: link.closest('.bottom-nav') ? 'bottom_nav' :
+                                    link.closest('.price-card') ? 'price_card' :
+                                    link.closest('.hero') ? 'hero' :
+                                    link.closest('.cta-final') ? 'cta_final' :
+                                    link.closest('nav') ? 'nav' : 'unknown'
+                });
+            });
+        });
+
         // Bottom nav bar visibility
         document.addEventListener('DOMContentLoaded', () => {
             const bottomNav = document.getElementById('bottomNav');
