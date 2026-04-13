@@ -1,0 +1,50 @@
+{
+  "brand": {
+    "name": "MAUA",
+    "tagline": "estaleiro digital",
+    "motto": "construindo o futuro",
+    "domain": "maua.pro"
+  },
+  "colors": {
+    "primary": {
+      "claude-orange": "#D97706",
+      "claude-orange-light": "#FBBF24"
+    },
+    "surface": {
+      "terminal-bg": "#0D0D0D",
+      "terminal-surface": "#1A1A1A",
+      "terminal-border": "#2D2D2D"
+    },
+    "system": {
+      "green": "#4ADE80",
+      "cyan": "#22D3EE",
+      "amber": "#F59E0B",
+      "red": "#EF4444",
+      "purple": "#A78BFA",
+      "blue": "#60A5FA"
+    },
+    "text": {
+      "primary": "#E4E4E7",
+      "secondary": "#A1A1AA",
+      "muted": "#71717A"
+    }
+  },
+  "typography": {
+    "mono": {
+      "family": "JetBrains Mono",
+      "weights": [400, 500, 600, 700, 800],
+      "usage": ["logo", "headings", "ui", "code"]
+    },
+    "sans": {
+      "family": "Inter",
+      "weights": [400, 500, 600, 700],
+      "usage": ["body", "descriptions", "editorial"]
+    }
+  },
+  "radii": {
+    "sm": "3px",
+    "md": "4px",
+    "lg": "6px",
+    "xl": "8px"
+  }
+}

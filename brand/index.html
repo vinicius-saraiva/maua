@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAUA · Brand System — brand.maua.pro</title>
+    <meta name="description" content="Sistema de marca MAUA. Logos, tipografia, cores, componentes e assets para apresentações e materiais.">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="brand.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">MAUA.pro / brand</a>
+            <ul class="nav-links">
+                <li><a href="#logo">logo</a></li>
+                <li><a href="#cores">cores</a></li>
+                <li><a href="#tipografia">tipografia</a></li>
+                <li><a href="#componentes">componentes</a></li>
+                <li><a href="#voz">voz</a></li>
+                <li><a href="#assets">assets</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="brand-hero">
+        <div class="section-container">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <span class="terminal-title">brand.maua.pro — sistema de marca</span>
+                </div>
+                <div class="terminal-body">
+                    <div class="command-line">
+                        <span class="prompt">$</span>
+                        <span class="command">maua brand --open</span>
+                    </div>
+                    <div class="output">→ loading brand system...<br>→ v1.0 · última atualização 2026-04-13</div>
+                    <h1 class="brand-hero-title">Brand <span class="highlight">System</span></h1>
+                    <p class="brand-hero-sub">O lugar central para encontrar logos, cores, tipografia e componentes da MAUA. Use isto para construir apresentações, propostas, posts, pitch decks e qualquer coisa que leve o nome da marca.</p>
+                    <div class="stats-terminal">
+                        <div class="stat-line"><span class="stat-key">// brand</span><span class="stat-value">MAUA · Estaleiro Digital</span></div>
+                        <div class="stat-line"><span class="stat-key">// dominio</span><span class="stat-value">maua.pro</span></div>
+                        <div class="stat-line"><span class="stat-key">// tagline</span><span class="stat-value">construindo o futuro</span></div>
+                        <div class="stat-line"><span class="stat-key">// estetica</span><span class="stat-value">terminal · pixel · AI-native</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOGO -->
+    <section id="logo" class="brand-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-command">$ cat logo.md</div>
+                <h2 class="section-title">01 · Logo</h2>
+                <p class="section-subtitle">O logotipo MAUA é <span class="highlight">ASCII art</span>, composto em caracteres de bloco Unicode (<code style="color:var(--terminal-green)">█ ║ ╔ ╗ ╝ ╚ ═</code>) e renderizado em <span class="highlight">JetBrains Mono</span>. Sempre em laranja Claude (#D97706) sobre fundo escuro.</p>
+            </div>
+
+            <div class="logo-showcase">
+                <div class="logo-card">
+                    <div class="logo-stage dark">
+                        <pre class="ascii-logo">███╗   ███╗ █████╗ ██╗   ██╗ █████╗
+████╗ ████║██╔══██╗██║   ██║██╔══██╗
+██╔████╔██║███████║██║   ██║███████║
+██║╚██╔╝██║██╔══██║██║   ██║██╔══██║
+██║ ╚═╝ ██║██║  ██║╚██████╔╝██║  ██║
+╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝</pre>
+                        <div class="logo-sub">estaleiro digital — maua.pro</div>
+                    </div>
+                    <div class="logo-meta">
+                        <div class="meta-label">logo primário</div>
+                        <div class="meta-value">ASCII · dark · #D97706</div>
+                    </div>
+                </div>
+
+                <div class="logo-card">
+                    <div class="logo-stage light">
+                        <pre class="ascii-logo dark-text">███╗   ███╗ █████╗ ██╗   ██╗ █████╗
+████╗ ████║██╔══██╗██║   ██║██╔══██╗
+██╔████╔██║███████║██║   ██║███████║
+██║╚██╔╝██║██╔══██║██║   ██║██╔══██║
+██║ ╚═╝ ██║██║  ██║╚██████╔╝██║  ██║
+╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝</pre>
+                        <div class="logo-sub dark-text">estaleiro digital — maua.pro</div>
+                    </div>
+                    <div class="logo-meta">
+                        <div class="meta-label">logo invertido</div>
+                        <div class="meta-value">ASCII · light · #0D0D0D</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="logo-source">
+                <div class="code-label">fonte (copie e cole)</div>
+                <pre><code>███╗   ███╗ █████╗ ██╗   ██╗ █████╗
+████╗ ████║██╔══██╗██║   ██║██╔══██╗
+██╔████╔██║███████║██║   ██║███████║
+██║╚██╔╝██║██╔══██║██║   ██║██╔══██║
+██║ ╚═╝ ██║██║  ██║╚██████╔╝██║  ██║
+╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝</code></pre>
+            </div>
+
+            <div class="usage-grid">
+                <div class="usage-card do">
+                    <div class="usage-tag green">✓ fazer</div>
+                    <ul>
+                        <li>renderizar em JetBrains Mono (ou outra mono que suporte U+2588, U+255x)</li>
+                        <li>usar laranja #D97706 sobre fundos escuros (#0D0D0D → #1A1A1A)</li>
+                        <li>preservar os line-breaks e espaços — é um bloco de 6 linhas × ~35 colunas</li>
+                        <li>acompanhar de 'estaleiro digital — maua.pro' em contextos formais</li>
+                    </ul>
+                </div>
+                <div class="usage-card dont">
+                    <div class="usage-tag red">✗ não fazer</div>
+                    <ul>
+                        <li>não recriar como imagem bitmap/pixel-art — é ASCII, sempre texto</li>
+                        <li>não trocar os caracteres (usar exatamente █ ╔ ╗ ╝ ╚ ║ ═)</li>
+                        <li>não usar fonte proporcional — quebra o alinhamento do bloco</li>
+                        <li>não aplicar gradientes, sombras, rotação ou inclinação</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORES -->
+    <section id="cores" class="brand-section alt-bg">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-command">$ ls colors/</div>
+                <h2 class="section-title">02 · Cores</h2>
+                <p class="section-subtitle">Paleta terminal. <span class="highlight">Laranja Claude</span> é a cor de marca. Verde, ciano e âmbar funcionam como cores de sistema. Tudo respira sobre o preto terminal.</p>
+            </div>
+
+            <div class="palette-block">
+                <h3 class="palette-title">Primárias</h3>
+                <div class="palette-grid">
+                    <div class="swatch" style="--c:#D97706">
+                        <div class="swatch-color"></div>
+                        <div class="swatch-info">
+                            <div class="swatch-name">Claude Orange</div>
+                            <div class="swatch-hex">#D97706</div>
+                            <div class="swatch-role">cor primária · logo · CTAs</div>
+                        </div>
+                    </div>
+                    <div class="swatch" style="--c:#FBBF24">
+                        <div class="swatch-color"></div>
+                        <div class="swatch-info">
+                            <div class="swatch-name">Orange Light</div>
+                            <div class="swatch-hex">#FBBF24</div>
+                            <div class="swatch-role">hover · destaques</div>
+                        </div>
+                    </div>
+                    <div class="swatch" style="--c:#0D0D0D">
+                        <div class="swatch-color border"></div>
+                        <div class="swatch-info">
+                            <div class="swatch-name">Terminal BG</div>
+                            <div class="swatch-hex">#0D0D0D</div>
+                            <div class="swatch-role">fundo base</div>
+                        </div>
+                    </div>
+                    <div class="swatch" style="--c:#1A1A1A">
+                        <div class="swatch-color border"></div>
+                        <div class="swatch-info">
+                            <div class="swatch-name">Terminal Surface</div>
+                            <div class="swatch-hex">#1A1A1A</div>
+                            <div class="swatch-role">cards · superfícies elevadas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="palette-block">
+                <h3 class="palette-title">Sistema</h3>
+                <div class="palette-grid">
+                    <div class="swatch" style="--c:#4ADE80"><div class="swatch-color"></div><div class="swatch-info"><div class="swatch-name">Terminal Green</div><div class="swatch-hex">#4ADE80</div><div class="swatch-role">status online · prompts · sucesso</div></div></div>
+                    <div class="swatch" style="--c:#22D3EE"><div class="swatch-color"></div><div class="swatch-info"><div class="swatch-name">Terminal Cyan</div><div class="swatch-hex">#22D3EE</div><div class="swatch-role">labels · metadados</div></div></div>
+                    <div class="swatch" style="--c:#F59E0B"><div class="swatch-color"></div><div class="swatch-info"><div class="swatch-name">Terminal Amber</div><div class="swatch-hex">#F59E0B</div><div class="swatch-role">avisos</div></div></div>
+                    <div class="swatch" style="--c:#EF4444"><div class="swatch-color"></div><div class="swatch-info"><div class="swatch-name">Terminal Red</div><div class="swatch-hex">#EF4444</div><div class="swatch-role">erros · problemas</div></div></div>
+                    <div class="swatch" style="--c:#A78BFA"><div class="swatch-color"></div><div class="swatch-info"><div class="swatch-name">Terminal Purple</div><div class="swatch-hex">#A78BFA</div><div class="swatch-role">acentos criativos</div></div></div>
+                    <div class="swatch" style="--c:#60A5FA"><div class="swatch-color"></div><div class="swatch-info"><div class="swatch-name">Terminal Blue</div><div class="swatch-hex">#60A5FA</div><div class="swatch-role">links secundários</div></div></div>
+                </div>
+            </div>
+
+            <div class="palette-block">
+                <h3 class="palette-title">Neutros / Texto</h3>
+                <div class="palette-grid">
+                    <div class="swatch" style="--c:#E4E4E7"><div class="swatch-color"></div><div class="swatch-info"><div class="swatch-name">Text Primary</div><div class="swatch-hex">#E4E4E7</div><div class="swatch-role">corpo de texto principal</div></div></div>
+                    <div class="swatch" style="--c:#A1A1AA"><div class="swatch-color"></div><div class="swatch-info"><div class="swatch-name">Text Secondary</div><div class="swatch-hex">#A1A1AA</div><div class="swatch-role">parágrafos · descrições</div></div></div>
+                    <div class="swatch" style="--c:#71717A"><div class="swatch-color"></div><div class="swatch-info"><div class="swatch-name">Text Muted</div><div class="swatch-hex">#71717A</div><div class="swatch-role">legendas · metadata</div></div></div>
+                    <div class="swatch" style="--c:#2D2D2D"><div class="swatch-color border"></div><div class="swatch-info"><div class="swatch-name">Terminal Border</div><div class="swatch-hex">#2D2D2D</div><div class="swatch-role">linhas · divisores</div></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIPOGRAFIA -->
+    <section id="tipografia" class="brand-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-command">$ cat fonts.md</div>
+                <h2 class="section-title">03 · Tipografia</h2>
+                <p class="section-subtitle">Duas famílias. <span class="highlight">JetBrains Mono</span> para marca, títulos, código e interface — o DNA terminal. <span class="highlight">Inter</span> para texto corrido longo e contextos mais editoriais.</p>
+            </div>
+
+            <div class="font-block">
+                <div class="font-header">
+                    <div>
+                        <div class="font-name">JetBrains Mono</div>
+                        <div class="font-role">monoespaçada · primária · marca</div>
+                    </div>
+                    <div class="font-weights">400 · 500 · 600 · 700 · 800</div>
+                </div>
+                <div class="font-specimen mono">
+                    <div class="specimen-xl">Aa Bb Cc 01 02 {}</div>
+                    <div class="specimen-lg">MAUA — construindo o futuro</div>
+                    <div class="specimen-md">$ maua --build --ship</div>
+                    <div class="specimen-sm">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 {}[]()&amp;*#@!?</div>
+                </div>
+                <div class="font-usage">
+                    <div><span class="u-label">H1 / Hero</span><span>clamp(1.5rem, 4vw, 2.5rem) · 700</span></div>
+                    <div><span class="u-label">H2 / Section</span><span>1.75rem · 700</span></div>
+                    <div><span class="u-label">Código / UI</span><span>0.875rem · 400–500</span></div>
+                    <div><span class="u-label">Label / Meta</span><span>0.75rem · 600 uppercase</span></div>
+                </div>
+            </div>
+
+            <div class="font-block">
+                <div class="font-header">
+                    <div>
+                        <div class="font-name sans">Inter</div>
+                        <div class="font-role">sans-serif · apoio · texto longo</div>
+                    </div>
+                    <div class="font-weights">400 · 500 · 600 · 700</div>
+                </div>
+                <div class="font-specimen sans">
+                    <div class="specimen-xl">Aa Bb Cc 01 02</div>
+                    <div class="specimen-lg">Construímos soluções digitais com IA.</div>
+                    <div class="specimen-md">Sites, apps, plataformas e automações — prototipadas em dias, não meses.</div>
+                    <div class="specimen-sm">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 &amp;*#@!?</div>
+                </div>
+                <div class="font-usage">
+                    <div><span class="u-label">Body</span><span>1rem · 400 · line-height 1.8</span></div>
+                    <div><span class="u-label">Subtítulos</span><span>0.85–1rem · 500</span></div>
+                    <div><span class="u-label">Descrições</span><span>0.8rem · 400</span></div>
+                </div>
+            </div>
+
+            <div class="type-rules">
+                <div class="rule-item"><strong>Hierarquia:</strong> use Mono para títulos, CTAs e qualquer elemento que pareça "de sistema". Inter entra quando o texto precisa respirar e ser lido longamente.</div>
+                <div class="rule-item"><strong>Prefixos:</strong> comandos começam com <code>$</code> (verde), labels com <code>//</code> (verde), paths com <code>./</code> (muted).</div>
+                <div class="rule-item"><strong>Line-height:</strong> 1.3 em títulos · 1.6–1.8 em corpo.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPONENTES -->
+    <section id="componentes" class="brand-section alt-bg">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-command">$ ls components/</div>
+                <h2 class="section-title">04 · Componentes</h2>
+                <p class="section-subtitle">Peças reutilizáveis que aparecem em tudo que a MAUA produz.</p>
+            </div>
+
+            <div class="component-row">
+                <div class="component-label">Terminal Window</div>
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-dot red"></div>
+                        <div class="terminal-dot yellow"></div>
+                        <div class="terminal-dot green"></div>
+                        <span class="terminal-title">exemplo.maua.pro</span>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="command-line"><span class="prompt">$</span><span class="command">maua deploy</span></div>
+                        <div class="output">→ container padrão para qualquer conteúdo MAUA</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="component-row">
+                <div class="component-label">Botões</div>
+                <div class="btn-row">
+                    <a href="#" class="btn btn-primary">ação primária</a>
+                    <a href="#" class="btn btn-secondary">ação secundária</a>
+                </div>
+            </div>
+
+            <div class="component-row">
+                <div class="component-label">Badge de status</div>
+                <div class="hero-offer">
+                    <span class="offer-tag">ONLINE</span>
+                    <span class="offer-text">status: maua --online · construindo o futuro</span>
+                </div>
+            </div>
+
+            <div class="component-row">
+                <div class="component-label">Stat line</div>
+                <div class="stats-terminal">
+                    <div class="stat-line"><span class="stat-key">// chave</span><span class="stat-value">valor destacado</span></div>
+                    <div class="stat-line"><span class="stat-key">// formato</span><span class="stat-value">label cyan + valor green</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VOZ -->
+    <section id="voz" class="brand-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-command">$ cat voice.md</div>
+                <h2 class="section-title">05 · Voz &amp; Tom</h2>
+                <p class="section-subtitle">A MAUA fala como um <span class="highlight">engenheiro sênior que explica bem</span>. Técnico sem ser hermético, confiante sem ser arrogante, direto sem ser seco.</p>
+            </div>
+
+            <div class="voice-grid">
+                <div class="voice-card"><h4>direto</h4><p>frases curtas, afirmativas. sem enrolação corporativa. "construímos X em Y dias" &gt; "entregamos soluções completas".</p></div>
+                <div class="voice-card"><h4>técnico mas acessível</h4><p>nomeia as coisas pelo nome (Next.js, IA, automação) mas explica o valor em linguagem simples.</p></div>
+                <div class="voice-card"><h4>confiante</h4><p>assume autoria e opinião. "a melhor stack para isso é X" &gt; "talvez X possa ser uma opção".</p></div>
+                <div class="voice-card"><h4>terminal-native</h4><p>usa metáforas de código, comando e sistema. "rodar", "shipar", "build" são parte do vocabulário.</p></div>
+            </div>
+
+            <div class="voice-examples">
+                <div class="voice-ex do"><div class="ex-tag green">✓ faz</div><p>"Primeiro protótipo grátis. Sem compromisso, sem contrato."</p></div>
+                <div class="voice-ex dont"><div class="ex-tag red">✗ não faz</div><p>"Oferecemos uma proposta inicial de valor sem custo associado, visando demonstrar sinergia."</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ASSETS -->
+    <section id="assets" class="brand-section alt-bg">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-command">$ ls downloads/</div>
+                <h2 class="section-title">06 · Assets</h2>
+                <p class="section-subtitle">Baixe e use em apresentações, propostas, decks e posts.</p>
+            </div>
+
+            <h3 class="palette-title">Logomark · M (favicon / app icon)</h3>
+            <div class="asset-grid">
+                <a href="assets/logos/maua-mark-1024.png" download class="asset-card">
+                    <div class="asset-icon">■</div>
+                    <div class="asset-name">M / laranja sobre preto</div>
+                    <div class="asset-meta">PNG · 1024×1024</div>
+                </a>
+                <a href="assets/logos/maua-mark-512.png" download class="asset-card">
+                    <div class="asset-icon">■</div>
+                    <div class="asset-name">M / laranja sobre preto</div>
+                    <div class="asset-meta">PNG · 512×512</div>
+                </a>
+                <a href="assets/logos/maua-mark-256.png" download class="asset-card">
+                    <div class="asset-icon">■</div>
+                    <div class="asset-name">M / laranja sobre preto</div>
+                    <div class="asset-meta">PNG · 256×256</div>
+                </a>
+                <a href="assets/logos/maua-mark-transparent-512.png" download class="asset-card">
+                    <div class="asset-icon">□</div>
+                    <div class="asset-name">M / laranja transparente</div>
+                    <div class="asset-meta">PNG · 512×512</div>
+                </a>
+                <a href="assets/logos/maua-mark-transparent-1024.png" download class="asset-card">
+                    <div class="asset-icon">□</div>
+                    <div class="asset-name">M / laranja transparente</div>
+                    <div class="asset-meta">PNG · 1024×1024</div>
+                </a>
+                <a href="assets/logos/maua-mark.ico" download class="asset-card">
+                    <div class="asset-icon">◆</div>
+                    <div class="asset-name">Favicon multi-res</div>
+                    <div class="asset-meta">ICO · 16 → 256</div>
+                </a>
+            </div>
+
+            <h3 class="palette-title" style="margin-top:2.5rem">Logos PNG</h3>
+            <div class="asset-grid">
+                <a href="assets/logos/maua-logo-orange-on-dark-lg.png" download class="asset-card">
+                    <div class="asset-icon">▲</div>
+                    <div class="asset-name">Laranja / fundo escuro</div>
+                    <div class="asset-meta">PNG · 2168×740 (lg)</div>
+                </a>
+                <a href="assets/logos/maua-logo-orange-on-dark-md.png" download class="asset-card">
+                    <div class="asset-icon">▲</div>
+                    <div class="asset-name">Laranja / fundo escuro</div>
+                    <div class="asset-meta">PNG · 1124×410 (md)</div>
+                </a>
+                <a href="assets/logos/maua-logo-orange-on-transparent-lg.png" download class="asset-card">
+                    <div class="asset-icon">▲</div>
+                    <div class="asset-name">Laranja / transparente</div>
+                    <div class="asset-meta">PNG · 2168×740 (lg)</div>
+                </a>
+                <a href="assets/logos/maua-logo-orange-on-transparent-md.png" download class="asset-card">
+                    <div class="asset-icon">▲</div>
+                    <div class="asset-name">Laranja / transparente</div>
+                    <div class="asset-meta">PNG · 1124×410 (md)</div>
+                </a>
+                <a href="assets/logos/maua-logo-black-on-light-lg.png" download class="asset-card">
+                    <div class="asset-icon">△</div>
+                    <div class="asset-name">Preto / fundo claro</div>
+                    <div class="asset-meta">PNG · 2168×740 (lg)</div>
+                </a>
+                <a href="assets/logos/maua-logo-white-on-transparent-lg.png" download class="asset-card">
+                    <div class="asset-icon">△</div>
+                    <div class="asset-name">Branco / transparente</div>
+                    <div class="asset-meta">PNG · 2168×740 (lg)</div>
+                </a>
+            </div>
+
+            <h3 class="palette-title" style="margin-top:2.5rem">Outros assets</h3>
+            <div class="asset-grid">
+                <a href="../favicon.svg" download class="asset-card">
+                    <div class="asset-icon">◆</div>
+                    <div class="asset-name">Favicon / Logomark</div>
+                    <div class="asset-meta">SVG · 32×32</div>
+                </a>
+                <a href="../meet-background.svg" download class="asset-card">
+                    <div class="asset-icon">▤</div>
+                    <div class="asset-name">Fundo Google Meet / Zoom</div>
+                    <div class="asset-meta">SVG · 1920×1080</div>
+                </a>
+                <a href="../meet-background.png" download class="asset-card">
+                    <div class="asset-icon">▦</div>
+                    <div class="asset-name">Fundo Meet (PNG)</div>
+                    <div class="asset-meta">PNG · 1920×1080</div>
+                </a>
+                <a href="assets/brand-tokens.json" download class="asset-card">
+                    <div class="asset-icon">{ }</div>
+                    <div class="asset-name">Design Tokens</div>
+                    <div class="asset-meta">JSON · cores + tipos</div>
+                </a>
+            </div>
+
+            <div class="code-block">
+                <div class="code-label">CSS variables</div>
+                <pre><code>:root {
+  --claude-orange: #D97706;
+  --claude-orange-light: #FBBF24;
+  --terminal-bg: #0D0D0D;
+  --terminal-surface: #1A1A1A;
+  --terminal-border: #2D2D2D;
+  --terminal-green: #4ADE80;
+  --terminal-cyan: #22D3EE;
+  --text-primary: #E4E4E7;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <span>brand.maua.pro · v1.0 · mantido por MAUA</span>
+                <span>construindo o futuro</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
